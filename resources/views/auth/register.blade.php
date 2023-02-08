@@ -52,35 +52,24 @@
                                 <div class="col-md-6">
                                     <select id="specialization"
                                         class="form-control @error('specialization') is-invalid @enderror"
-                                        name="specialization_id" {{-- value="{{ old('specialization') }}" required
-                                        autocomplete="specialization" autofocus --}}>
+                                        name="specialization">
 
-                                        {{-- @foreach ($specializations as $specialization)
-                                            <option value="{{ $specialization->id }}">{{ $specialization->name }}</option>
-                                        @endforeach --}}
+                                        <option value="">Choose Your Specialization</option>
+
+                                        @foreach ($specializations as $specialization)
+                                            <option value="{{ $specialization->id }}">{{ $specialization->name }}
+                                            </option>
+                                        @endforeach
+
+
 
                                         @error('specialization')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                </div>
-                            </div>
+                                    </select>
 
-                            <div class="mb-4 row">
-                                <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="address" type="text"
-                                        class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" required autocomplete="address" autofocus>
-
-                                    @error('address')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
                                 </div>
                             </div>
 
@@ -94,6 +83,23 @@
                                         value="{{ old('email') }}" required autocomplete="email">
 
                                     @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="mb-4 row">
+                                <label for="address"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="address" type="text"
+                                        class="form-control @error('address') is-invalid @enderror" name="address"
+                                        value="{{ old('address') }}" required autocomplete="address" autofocus>
+
+                                    @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

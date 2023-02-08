@@ -17,7 +17,7 @@ class SpecializationController extends Controller
     {
         $specializations = Specialization::all();
         dd($specializations);
-        return view('auth.register', compact('specializations'));
+        return view('register', compact('specializations'));
     }
 
     /**
