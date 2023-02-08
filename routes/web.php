@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DocProfileController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,12 +20,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('docProfile/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('docProfile.dashboard');
+Route::get('docProfile/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('docProfile.index');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
+
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('/docProfile', [DashboardController::class, 'index'])->name('docProfile');
+//     Route::resource('docProfile', DocProfileController::class);
+// });
+
+Route::get('docProfile/create', [DocProfileController::class, 'create'])->middleware(['auth', 'verified'])->name('docProfile.create');
+
+
 
 require __DIR__ . '/auth.php';
