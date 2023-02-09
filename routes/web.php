@@ -29,9 +29,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('docProfile');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    // Route::get('docProfile', [DocProfileController::class, 'show']);
     Route::resource('docProfile', DocProfileController::class);
 });
+
+
 
 // Route::get('docProfile/create', [DocProfileController::class, 'create'])->middleware(['auth', 'verified'])->name('docProfile.create');
 

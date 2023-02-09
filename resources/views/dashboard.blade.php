@@ -1,30 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.doc_admin')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+    <h2 class="text-light">Welcome {{ Auth::user()->name }}</h2>
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
 
-                        {{ __('You are logged in!') }}
-                    </div>
+    <a class="btn btn-success" href="{{ route('docProfile.create') }}">New Profile</a>
 
-                    <div>
+    @foreach ($docProfile as $item)
+        @if (isset($item->id))
+            <a class="btn btn-primary" href="{{ route('docProfile.show', $item->id) }}">Show Profile</a>
+        @endif
+    @endforeach
 
-                        {{ Auth::user()->name }}
+    {{-- 
+    
 
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    <ul class="text-light">
+        @foreach ($docProfile as $doc)
+            <li>{{ $doc }}</li>
+        @endforeach
+    </ul> --}}
 @endsection

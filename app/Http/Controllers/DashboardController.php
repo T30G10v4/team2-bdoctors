@@ -10,10 +10,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-
         $userId = Auth::id();
-        $docProfile = DocProfile::where('user_id', '=', $userId);
+        $docProfile = DocProfile::where('user_id', '=', $userId)->get();
 
-        return view('docProfile.index', compact('docProfile'));
+
+        return view('dashboard', compact('docProfile'));
     }
 }

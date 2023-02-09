@@ -17,11 +17,6 @@ class DocProfileController extends Controller
      */
     public function index()
     {
-        $userId = Auth::id();
-        $docProfile = DocProfile::where('user_id', '=', $userId)->get();
-
-
-        return view('docProfile.index', compact('docProfile'));
     }
 
     /**
@@ -63,7 +58,7 @@ class DocProfileController extends Controller
 
 
 
-        return redirect()->route('docProfile.index')->with('message', 'Il tuo nuovo progetto è stato creato');
+        return redirect()->route('docProfile.show', $docProfile->id)->with('message', 'Il tuo nuovo progetto è stato creato');
     }
 
     /**
@@ -74,6 +69,7 @@ class DocProfileController extends Controller
      */
     public function show(DocProfile $docProfile)
     {
+        // dd($docProfile);
         return view('docProfile.show', compact('docProfile'));
     }
 
