@@ -81,7 +81,7 @@ class DocProfileController extends Controller
      */
     public function edit(DocProfile $docProfile)
     {
-        //
+        return view('docProfile.edit', compact('docProfile'));
     }
 
     /**
@@ -93,7 +93,22 @@ class DocProfileController extends Controller
      */
     public function update(UpdateDocProfileRequest $request, DocProfile $docProfile)
     {
-        //
+        $form_data = $request->validated();
+        // $form_data['slug'] = Project::generateSlug($form_data['title']);
+
+        // if ($request->hasFile('cover_image')) {
+        //     //se esiste un file precedente eliminarlo 
+        //     if ($project->cover_image) {
+        //         Storage::delete($project->cover_image);
+        //     }
+        //     $path = Storage::put('project_images', $request->cover_image);
+        //     $form_data['cover_image'] = $path;
+        // }
+
+        $docProfile->update($form_data);
+
+        // i doppi appici per il tempalte literal
+        return redirect()->route('docProfile.show', $docProfile->id)->with('message', "Hai aggiornato con successo");
     }
 
     /**
@@ -104,6 +119,7 @@ class DocProfileController extends Controller
      */
     public function destroy(DocProfile $docProfile)
     {
-        //
+        $docProfile->delete();
+        return redirect()->route('dashboard')->with('message', "il profilo è stato cancellato");
     }
 }

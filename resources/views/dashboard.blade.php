@@ -6,18 +6,15 @@
 
     <a class="btn btn-success" href="{{ route('docProfile.create') }}">New Profile</a>
 
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+
     @foreach ($docProfile as $item)
         @if (isset($item->id))
             <a class="btn btn-primary" href="{{ route('docProfile.show', $item->id) }}">Show Profile</a>
         @endif
     @endforeach
-
-    {{-- 
-    
-
-    <ul class="text-light">
-        @foreach ($docProfile as $doc)
-            <li>{{ $doc }}</li>
-        @endforeach
-    </ul> --}}
 @endsection

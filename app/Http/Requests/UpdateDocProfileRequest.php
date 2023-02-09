@@ -13,7 +13,7 @@ class UpdateDocProfileRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class UpdateDocProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
+            'curriculum_vitae' => ['nullable', 'max:255'],
+            'photo' => ['nullable', 'image', 'max:512'],
+            'studio_address' => ['nullable', 'max:255'],
+            'tel' => ['nullable', 'max:20'],
+            'services' => ['nullable'],
+            'user_id' => ['nullable', 'exists:users,id'],
+
+
         ];
     }
 }
