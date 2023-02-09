@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Exists;
 
 class StoreDocProfileRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreDocProfileRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,15 @@ class StoreDocProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
+            'curriculum_vitae' => ['nullable', 'max:255'],
+            'photo' => ['nullable', 'image', 'max:512'],
+            'studio_address' => ['nullable', 'max:255'],
+            'tel' => ['nullable', 'max:20'],
+            'services' => ['nullable'],
+            'user_id' => ['nullable', 'exists:users,id'],
+
+
         ];
     }
 }

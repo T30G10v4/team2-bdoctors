@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('docProfile/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('docProfile.index');
 

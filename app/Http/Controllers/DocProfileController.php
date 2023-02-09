@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\DocProfile;
 use App\Http\Requests\StoreDocProfileRequest;
 use App\Http\Requests\UpdateDocProfileRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class DocProfileController extends Controller
 {
@@ -15,7 +17,11 @@ class DocProfileController extends Controller
      */
     public function index()
     {
-        return view('docProfile.index');
+        $userId = Auth::id();
+        // $docProfile = DocProfile::where('user_id', '=', $userId);
+        $docProfile = DocProfile::all();
+        dd($docProfile);
+        return view('docProfile.index', compact('docProfile'));
     }
 
     /**
@@ -36,7 +42,28 @@ class DocProfileController extends Controller
      */
     public function store(StoreDocProfileRequest $request)
     {
-        //
+        $form_data = $request->validated();
+        // $form_data['slug'] = DocProfile::generateSlug($form_data['id']);
+
+
+        // if ($request->hasFile('cover_image')) {
+
+        //     $path = Storage::put('project_images', $request->cover_image);
+        //     $form_data['cover_image'] = $path;
+
+        // }
+
+        $form_data['user_id'] = Auth::id();
+
+        $docProfile = DocProfile::create($form_data);
+
+        if ($request->has('users')) {
+            $docProfile->users()->attach($request->users);
+        }
+
+        dd($docProfile);
+
+        return redirect()->route('docProfile.index')->with('message', 'Il tuo nuovo progetto è stato creato');
     }
 
     /**
