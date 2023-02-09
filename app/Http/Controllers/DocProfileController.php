@@ -61,7 +61,7 @@ class DocProfileController extends Controller
             $docProfile->users()->attach($request->users);
         }
 
-        dd($docProfile);
+
 
         return redirect()->route('docProfile.index')->with('message', 'Il tuo nuovo progetto è stato creato');
     }
@@ -74,7 +74,7 @@ class DocProfileController extends Controller
      */
     public function show(DocProfile $docProfile)
     {
-        //
+        return view('docProfile.show', compact('docProfile'));
     }
 
     /**
