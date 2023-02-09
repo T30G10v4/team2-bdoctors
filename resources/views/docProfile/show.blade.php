@@ -12,12 +12,17 @@
         <a class="btn btn-warning" href="{{ route('docProfile.edit', $docProfile->id) }}">Modify Profile</a>
 
         <a class="btn btn-primary" href="{{ route('dashboard') }}">Dashboard</a>
+
+
         <form action="{{ route('docProfile.destroy', $docProfile->id) }}" method="POST" class="d-inline-block">
             @method('DELETE')
             @csrf
-            <button type="submit" class="btn btn-danger">
+            <button type="submit" class=" delete-btn btn btn-danger">
                 Delete Profile
             </button>
         </form>
+
+
+        @include('partials.delete-modal')
     </div>
 @endsection
