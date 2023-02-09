@@ -15,6 +15,7 @@ class DocProfileController extends Controller
      */
     public function index()
     {
+        return view('docProfile.index');
     }
 
     /**

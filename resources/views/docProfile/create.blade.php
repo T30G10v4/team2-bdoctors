@@ -1,11 +1,11 @@
 @extends('layouts.doc_admin')
 
 @section('content')
-    <div class="container">
+    {{-- <div class="container">
         <h2 class="text-center">Create Profile</h2>
         <div class="row justify-content-center">
             <div class="col-8">
-                {{-- @include('partials.errors') --}}
+
                 <form action="{{ route('docProfile.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
@@ -32,5 +32,5 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
