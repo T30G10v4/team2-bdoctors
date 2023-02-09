@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('studio_address')->nullable();
             $table->string('tel', 20)->nullable();
             $table->text('services')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }
