@@ -8,4 +8,10 @@
     <a class="btn btn-danger">Delete Profile</a>
 
     <a class="btn btn-success" href="{{ route('docProfile.create') }}">New Profile</a>
+
+    <ul class="text-light">
+        @foreach ($docProfile as $doc)
+            <li>{{ $doc }}</li>
+        @endforeach
+    </ul>
 @endsection

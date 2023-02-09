@@ -18,9 +18,9 @@ class DocProfileController extends Controller
     public function index()
     {
         $userId = Auth::id();
-        // $docProfile = DocProfile::where('user_id', '=', $userId);
-        $docProfile = DocProfile::all();
-        dd($docProfile);
+        $docProfile = DocProfile::where('user_id', '=', $userId)->get();
+
+
         return view('docProfile.index', compact('docProfile'));
     }
 
