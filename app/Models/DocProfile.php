@@ -35,4 +35,9 @@ class DocProfile extends Model
     {
         return $this->belongsToMany(Specialization::class);
     }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
