@@ -29,7 +29,7 @@
                         <h4>Specializations</h4>
                         @foreach ($specializations as $specialization)
                             <div class="form-check">
-                                {{-- 'value' deve contenere i'id da salvare che alla selezione del checkbox viene salvato tramite il 'name' nell'array collection [specializations], array che è nella tabella ponte profile-specialization (non nella tabella profiles!) --}}
+
                                 <input type="checkbox" name="specializations[]"
                                     id="specialization-{{ $specialization->id }}" class="form-check-input"
                                     value="{{ $specialization->id }}">

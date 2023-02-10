@@ -28,10 +28,21 @@ class UpdateDocProfileRequest extends FormRequest
             'curriculum_vitae' => ['nullable', 'max:255'],
             'photo' => ['nullable', 'image', 'max:512'],
             'studio_address' => ['nullable', 'max:255'],
-            'tel' => ['nullable', 'max:20'],
+            //'tel' => ['nullable', 'required', 'numeric', 'min:9', 'max:11'],
             'services' => ['nullable'],
             'user_id' => ['nullable', 'exists:users,id'],
+            'specializations' => ['exists:specializations,id'],
 
+
+
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'tel.numeric' => 'Phone number must be numeric',
+            'tel.max' => 'Phone number must be from 9 to 11',
         ];
     }
 }

@@ -17,13 +17,13 @@
         <p>{{ $docProfile->services }}</p>
 
 
-        {{-- <div class="specializations">
-            @forelse ($docProfile->$specializations as $specialization)
+        <div class="specializations">
+            @forelse ($docProfile->specializations as $specialization)
                 <span class="text-danger">{{ $specialization->name }}</span>
             @empty
                 <span>No secondary specialization</span>
             @endforelse
-        </div> --}}
+        </div>
 
         <div class="text-center">
             @if ($docProfile->photo)

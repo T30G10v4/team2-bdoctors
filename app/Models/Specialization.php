@@ -10,4 +10,9 @@ class Specialization extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'slug'];
+
+    public function docProfiles()
+    {
+        return $this->belongsToMany(DocProfile::class);
+    }
 }

@@ -53,12 +53,18 @@ class DocProfileController extends Controller
             // dd($form_data);
         }
 
+
+
         $form_data['user_id'] = Auth::id();
 
         $docProfile = DocProfile::create($form_data);
 
         if ($request->has('users')) {
             $docProfile->users()->attach($request->users);
+        }
+
+        if ($request->has('specializations')) {
+            $docProfile->specializations()->attach($form_data['specializations']);
         }
 
 
@@ -87,7 +93,8 @@ class DocProfileController extends Controller
      */
     public function edit(DocProfile $docProfile)
     {
-        return view('docProfile.edit', compact('docProfile'));
+        $specializations = Specialization::all();
+        return view('docProfile.edit', compact('docProfile', 'specializations'));
     }
 
     /**
@@ -113,6 +120,13 @@ class DocProfileController extends Controller
 
         $docProfile->update($form_data);
 
+        if ($request->has('specializations')) {
+            $docProfile->specializations()->sync($form_data['specializations']);
+        } else {
+
+            $docProfile->specializations()->sync([]);
+        }
+
         // i doppi appici per il tempalte literal
         return redirect()->route('docProfile.show', $docProfile->id)->with('message', "Hai aggiornato con successo");
     }
@@ -125,6 +139,7 @@ class DocProfileController extends Controller
      */
     public function destroy(DocProfile $docProfile)
     {
+        $docProfile->specializations()->detach();
         $docProfile->delete();
         return redirect()->route('dashboard')->with('message', "il profilo è stato cancellato");
     }
