@@ -32,7 +32,6 @@ class UpdateDocProfileRequest extends FormRequest
             'services' => ['nullable'],
             'user_id' => ['nullable', 'exists:users,id'],
 
-
         ];
     }
 }

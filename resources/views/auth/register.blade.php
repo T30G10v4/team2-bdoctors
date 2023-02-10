@@ -12,8 +12,8 @@
                             @csrf
 
                             <div class="mb-4 row">
-                                <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}
+                                    *</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -29,8 +29,8 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="surname"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+                                <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}
+                                    *</label>
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text"
@@ -47,7 +47,7 @@
 
                             <div class="mb-4 row">
                                 <label for="specialization"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Specialization') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Specialization') }} *</label>
 
                                 <div class="col-md-6">
                                     <select id="specialization"
@@ -75,7 +75,7 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }} *</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
@@ -91,8 +91,8 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                                <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}
+                                    *</label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -108,8 +108,8 @@
                             </div>
 
                             <div class="mb-4 row">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}
+                                    *</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -126,7 +126,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }} *</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"

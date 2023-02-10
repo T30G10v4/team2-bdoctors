@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\DocProfile;
 use App\Http\Requests\StoreDocProfileRequest;
 use App\Http\Requests\UpdateDocProfileRequest;
+use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class DocProfileController extends Controller
 {
@@ -26,7 +29,9 @@ class DocProfileController extends Controller
      */
     public function create()
     {
-        return view('docProfile.create');
+        $specializations = Specialization::all();
+
+        return view('docProfile.create', compact('specializations'));
     }
 
     /**
@@ -38,15 +43,15 @@ class DocProfileController extends Controller
     public function store(StoreDocProfileRequest $request)
     {
         $form_data = $request->validated();
-        // $form_data['slug'] = DocProfile::generateSlug($form_data['id']);
 
+        //se c'è il file nel request si creerà una cartella nella quale andrà l'immagine in request, che verrà rinominata
+        if ($request->hasFile('photo')) {
 
-        // if ($request->hasFile('cover_image')) {
-
-        //     $path = Storage::put('project_images', $request->cover_image);
-        //     $form_data['cover_image'] = $path;
-
-        // }
+            $path = Storage::put('profile_image', $request->photo);
+            //salviamo poi il file ottenuto in form_data
+            $form_data['photo'] = $path;
+            // dd($form_data);
+        }
 
         $form_data['user_id'] = Auth::id();
 
@@ -69,8 +74,9 @@ class DocProfileController extends Controller
      */
     public function show(DocProfile $docProfile)
     {
+        $users = Auth::user();
         // dd($docProfile);
-        return view('docProfile.show', compact('docProfile'));
+        return view('docProfile.show', compact('docProfile', 'users'));
     }
 
     /**
