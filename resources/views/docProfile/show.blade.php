@@ -44,7 +44,7 @@
             @method('DELETE')
             @csrf
             <button type="submit" class=" delete-btn btn btn-danger">
-                Delete Profile
+                <i class="fa-solid fa-trash"></i>
             </button>
         </form>
 

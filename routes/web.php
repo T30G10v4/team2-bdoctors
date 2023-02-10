@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocProfileController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Route::get('docProfile', [DocProfileController::class, 'show']);
     Route::resource('docProfile', DocProfileController::class);
     Route::resource('messages', MessageController::class)->only(['index', 'show']);
+    Route::resource('reviews', ReviewController::class)->only(['index', 'show']);
 });
 
 
