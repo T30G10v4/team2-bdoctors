@@ -55,7 +55,7 @@
                         {{-- anteprima immagine che si aggiorna tramite attributo id collegato ad app.js --}}
                         <div class="mt-3">
                             @if ($docProfile->photo)
-                                <img src="{{ asset('storage/' . $docProfile->photo) }}"
+                                <img src="{{ asset('storage/' . $docProfile->photo) }}" id="image_preview"
                                     alt="{{ 'Cover image di ' . $docProfile->slug }}" style="max-width:300px">
                             @else
                                 <div class="w-50 bg-secondary py-4 text-center">
