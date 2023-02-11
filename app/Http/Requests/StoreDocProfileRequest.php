@@ -29,12 +29,20 @@ class StoreDocProfileRequest extends FormRequest
             'curriculum_vitae' => ['nullable', 'mimes:pdf', 'max:2040'],
             'photo' => ['nullable', 'image', 'max:512'],
             'studio_address' => ['nullable', 'max:255'],
-            //'tel' => ['nullable', 'max:20', 'required', 'numeric'],
+            'tel' => ['nullable', 'numeric', 'digits_between:9, 12'],
             'services' => ['nullable'],
             'user_id' => ['nullable', 'exists:users,id'],
             'specializations' => ['exists:specializations,id'],
 
 
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'tel.numeric' => 'Phone number must be numeric',
+            'tel.digits' => 'Phone number must be from 9 to 12',
         ];
     }
 }

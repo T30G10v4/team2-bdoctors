@@ -6,6 +6,8 @@
         <div class="row justify-content-center">
             <div class="col-8">
 
+                @include('partials.errors')
+
                 <form action="{{ route('docProfile.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
@@ -16,7 +18,7 @@
 
                     <div class="mb-3">
                         <label for="tel">Telephone</label>
-                        <input type="tel" id="tel" name="tel" class="form-control" pattern="[0-9]{9-11}"
+                        <input type="tel" id="tel" name="tel" class="form-control" pattern="[0-9]{9-12}"
                             value="{{ old('tel') }}">
                     </div>
 

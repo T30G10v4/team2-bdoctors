@@ -28,7 +28,7 @@ class UpdateDocProfileRequest extends FormRequest
             'curriculum_vitae' => ['nullable', 'mimes:pdf', 'max:2040'],
             'photo' => ['nullable', 'image', 'max:512'],
             'studio_address' => ['nullable', 'max:255'],
-            //'tel' => ['nullable', 'required', 'numeric', 'min:9', 'max:11'],
+            'tel' => ['nullable', 'numeric', 'digits_between:9, 12'],
             'services' => ['nullable'],
             'user_id' => ['nullable', 'exists:users,id'],
             'specializations' => ['exists:specializations,id'],
@@ -42,7 +42,7 @@ class UpdateDocProfileRequest extends FormRequest
     {
         return [
             'tel.numeric' => 'Phone number must be numeric',
-            'tel.max' => 'Phone number must be from 9 to 11',
+            'tel.digits' => 'Phone number must be from 9 to 12',
         ];
     }
 }
