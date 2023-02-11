@@ -10,10 +10,15 @@ class DashboardController extends Controller
 {
     public function index()
     {
+
         $userId = Auth::id();
         $docProfile = DocProfile::where('user_id', '=', $userId)->get();
 
+        $thereIsProfile = null;
+        foreach ($docProfile as $item) {
+            $thereIsProfile = $item->id;
+        }
 
-        return view('dashboard', compact('docProfile'));
+        return view('dashboard', compact('docProfile', 'thereIsProfile'));
     }
 }

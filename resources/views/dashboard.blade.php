@@ -11,13 +11,13 @@
 
     <h2 class="text-light">PROFILE SECTION</h2>
 
-    <a class="btn btn-success" href="{{ route('docProfile.create') }}">New Profile</a>
+    @if (!$thereIsProfile)
+        <a class="btn btn-success" href="{{ route('docProfile.create') }}">New Profile</a>
+    @endif
 
-    @foreach ($docProfile as $item)
-        @if (isset($item->id))
-            <a class="btn btn-primary" href="{{ route('docProfile.show', $item->id) }}">Show Profile</a>
-        @endif
-    @endforeach
+    @if (isset($thereIsProfile))
+        <a class="btn btn-primary" href="{{ route('docProfile.show', $thereIsProfile) }}">Show Profile</a>
+    @endif
 
     <h2 class="text-light">MESSAGES SECTION</h2>
 

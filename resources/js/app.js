@@ -45,3 +45,28 @@ if (coverImageInput && imagePreview) {
         }
     });
 }
+
+//---------FUNZIONALITA' DI AGGIORNAMENTO ANTEPRIMA CURRICULUM--------------
+const curriculumInput = document.getElementById("curriculum_vitae");
+const curriculumPreview = document.getElementById("curriculum_preview");
+
+
+    if (curriculumInput && curriculumPreview) {
+        curriculumInput.addEventListener("change", function () {
+            const uploadedFile = this.files[0];
+            if (uploadedFile) {
+                const reader = new FileReader();
+                reader.addEventListener("load", function () {
+                    curriculumPreview.src = reader.result;
+                });
+                reader.readAsDataURL(uploadedFile);
+            }
+        });
+    };
+
+
+
+
+
+
+

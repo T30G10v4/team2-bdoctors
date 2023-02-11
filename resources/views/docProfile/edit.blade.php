@@ -8,7 +8,7 @@
 
                 @include('partials.errors')
 
-                <form action="{{ route('docProfile.update', $docProfile->id) }}" method="POST">
+                <form action="{{ route('docProfile.update', $docProfile->id) }}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="mb-3">
@@ -47,6 +47,43 @@
                             </div>
                         @endforeach
                     </div>
+
+                    <div class="form-group mb-3 ">
+                        <label for="photo">Photo</label>
+                        <input type="file" name="photo" id="photo" class="form-control">
+
+                        {{-- anteprima immagine che si aggiorna tramite attributo id collegato ad app.js --}}
+                        <div class="mt-3">
+                            @if ($docProfile->photo)
+                                <img src="{{ asset('storage/' . $docProfile->photo) }}"
+                                    alt="{{ 'Cover image di ' . $docProfile->slug }}" style="max-width:300px">
+                            @else
+                                <div class="w-50 bg-secondary py-4 text-center">
+                                    No Image
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+
+                    {{-- CURRICULA --}}
+                    <div class="form-group mb-3">
+                        <label for="curriculum_vitae">Curriculum Vitae</label>
+                        <input type="file" name="curriculum_vitae" id="curriculum_vitae"
+                            class="form-control @error('curriculum_vitae') is-invalid @enderror">
+                        @error('curriculum_vitae')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    {{-- anteprima curriculum che si aggiorna tramite attributo id collegato ad app.js --}}
+                    <div class="mt-3">
+                        <embed src="{{ asset('storage/' . $curriculumProfile) }}" id="curriculum_preview" width="600"
+                            height="500" alt="pdf-curriculum" />
+                    </div>
+
+
 
                     <button class="btn btn-warning" type="submit">Edit</button>
                 </form>

@@ -3,6 +3,7 @@
 @section('content')
     <h2 class="text-light">messages</h2>
 
+    <a class="btn btn-light" href="{{ url()->previous() }}">Torna indietro</a>
 
 
     <table class="table table-dark">

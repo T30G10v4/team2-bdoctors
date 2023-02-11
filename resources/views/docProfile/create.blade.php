@@ -58,6 +58,29 @@
                         <img id="image_preview" src="" alt="" style="max-height: 200px">
                     </div>
 
+                    {{-- CURRICULA --}}
+                    <div class="form-group mb-3">
+                        <label for="curriculum_vitae">Curriculum Vitae</label>
+                        <input type="file" name="curriculum_vitae" id="curriculum_vitae"
+                            class="form-control
+                            @error('curriculum_vitae')
+                            is-invalid
+                            @enderror">
+                        @error('curriculum_vitae')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    {{-- anteprima curriculum che si aggiorna tramite attributo id collegato ad app.js --}}
+
+
+                    <div class="mt-3">
+                        <embed src="{{ asset('storage/' . $curriculumProfile) }}" id="curriculum_preview" width="600"
+                            height="500" alt="pdf-curriculum" />
+                    </div>
+
 
                     <button class="btn btn-success" type="submit">Create</button>
                 </form>

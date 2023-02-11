@@ -25,7 +25,7 @@ class UpdateDocProfileRequest extends FormRequest
     {
         return [
 
-            'curriculum_vitae' => ['nullable', 'max:255'],
+            'curriculum_vitae' => ['nullable', 'mimes:pdf', 'max:2040'],
             'photo' => ['nullable', 'image', 'max:512'],
             'studio_address' => ['nullable', 'max:255'],
             //'tel' => ['nullable', 'required', 'numeric', 'min:9', 'max:11'],
