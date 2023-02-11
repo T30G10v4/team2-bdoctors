@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             SpecializationSeeder::class,
-            MessageSeeder::class,
+            // MessageSeeder::class,
         ]);
     }
 }

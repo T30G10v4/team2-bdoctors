@@ -13,9 +13,7 @@
 
     @if (!$thereIsProfile)
         <a class="btn btn-success" href="{{ route('docProfile.create') }}">New Profile</a>
-    @endif
-
-    @if (isset($thereIsProfile))
+    @else
         <a class="btn btn-primary" href="{{ route('docProfile.show', $thereIsProfile) }}">Show Profile</a>
     @endif
 
