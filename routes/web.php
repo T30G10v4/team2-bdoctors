@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChartJSController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocProfileController;
 use App\Http\Controllers\MessageController;
@@ -37,6 +38,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('docProfile', DocProfileController::class);
     Route::resource('messages', MessageController::class)->only(['index', 'show']);
     Route::resource('reviews', ReviewController::class)->only(['index', 'show']);
+    Route::get('my-stats', [ChartJSController::class, 'index'])->name('stats');
 });
 
 

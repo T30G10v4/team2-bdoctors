@@ -15,6 +15,7 @@
         <a class="btn btn-success" href="{{ route('docProfile.create') }}">New Profile</a>
     @else
         <a class="btn btn-primary" href="{{ route('docProfile.show', $thereIsProfile) }}">Show Profile</a>
+        <a class="btn btn-primary" href="{{ route('stats') }}">Show stats</a>
     @endif
 
     <h2 class="text-light">MESSAGES SECTION</h2>
