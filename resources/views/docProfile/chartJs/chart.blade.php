@@ -82,7 +82,7 @@
                 }
             };
 
-            //create Bar Chart class object Sassone 🗿
+            //create bar Chart class object Sassone 🗿
             var chart1 = new Chart(ctx, {
                 type: "bar",
                 data: data,
@@ -94,11 +94,11 @@
         //reviews
 
         $(function() {
-            //get the bar chart canvas
+            //get the line chart canvas
             var cData = JSON.parse(`<?php echo $chart_dataReview; ?>`);
             var ctx = $("#line-chart");
 
-            //bar chart data
+            //line chart data
             var data = {
                 labels: cData.labelReview,
 
@@ -131,7 +131,7 @@
                 }
             };
 
-            //create Bar Chart class object Sassone 🗿
+            //create line Chart class object Sassone 🗿
             var chart2 = new Chart(ctx, {
                 type: "line",
                 data: data,
