@@ -54,14 +54,9 @@
 
                         {{-- anteprima immagine che si aggiorna tramite attributo id collegato ad app.js --}}
                         <div class="mt-3">
-                            @if ($docProfile->photo)
-                                <img src="{{ asset('storage/' . $docProfile->photo) }}" id="image_preview"
-                                    alt="{{ 'Cover image di ' . $docProfile->slug }}" style="max-width:300px">
-                            @else
-                                <div class="w-50 bg-secondary py-4 text-center">
-                                    No Image
-                                </div>
-                            @endif
+                            <img src="{{ asset('storage/' . $docProfile->photo) }}" id="image_preview"
+                                class="photo_preview_edit" alt="{{ 'Cover image di ' . $docProfile->slug }}"
+                                style="max-width:300px">
                         </div>
                     </div>
 
@@ -69,7 +64,7 @@
                     <div class="form-group mb-3">
                         <label for="curriculum_vitae">Curriculum Vitae</label>
                         <input type="file" name="curriculum_vitae" id="curriculum_vitae"
-                            class="form-control @error('curriculum_vitae') is-invalid @enderror">
+                            class="curriculum_edit form-control @error('curriculum_vitae') is-invalid @enderror">
                         @error('curriculum_vitae')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -82,7 +77,6 @@
                         <embed src="{{ asset('storage/' . $curriculumProfile) }}" id="curriculum_preview" width="600"
                             height="500" alt="pdf-curriculum" />
                     </div>
-
 
 
                     <button class="btn btn-warning" type="submit">Edit</button>
