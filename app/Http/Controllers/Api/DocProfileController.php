@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DocProfile;
 use App\Models\Specialization;
 use App\Models\User;
+use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,17 +28,26 @@ class DocProfileController extends Controller
                 $thereIsProfile = $item->id;
             }
 
+
+
             if ($thereIsProfile) {
 
                 $specializations = DB::table('specializations')
                     ->join('doc_profile_specialization', 'specializations.id', '=', 'doc_profile_specialization.specialization_id')
-                    ->join('doc_profiles', 'doc_profiles.id', '=', 'doc_profile_specialization.doc_profile_id')
-                    ->select('specializations.name')
+                    ->join('doc_profiles', 'doc_profile_specialization.doc_profile_id', '=', 'doc_profiles.id')
+                    ->select('specializations.name')->where('doc_profiles.id', '=', $thereIsProfile)
                     ->get();
 
 
 
                 $specializationsArray = [];
+
+                $nameSpecialization = Specialization::select('specializations.name')
+                    ->where('specializations.id', '=', $user->specialization)
+                    ->get();
+
+                array_push($specializationsArray, $nameSpecialization[0]->name);
+
                 foreach ($specializations as $spec) {
                     array_push($specializationsArray, $spec->name);
                 }
