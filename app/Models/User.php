@@ -25,7 +25,8 @@ class User extends Authenticatable
         'email',
         'password',
         'address',
-        'specialization'
+        'specialization',
+        'doc_profile_id',
 
     ];
 

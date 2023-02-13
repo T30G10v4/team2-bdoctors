@@ -36,10 +36,10 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'name' => ['required', 'string', 'max:255', 'alpha'],
+            'email' => ['required', 'string', 'email', 'regex:/(.+)@(.+).(.+)/i', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'surname' => ['required', 'string', 'max:50'],
+            'surname' => ['required', 'string', 'max:50', 'alpha'],
             'address' => ['required', 'string', 'max:255'],
             'specialization' => ['required', 'string', 'max:50'],
 
@@ -59,5 +59,14 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    public function messages()
+    {
+        return [
+            'email' => 'blablabla',
+
+
+        ];
     }
 }

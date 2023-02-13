@@ -52,6 +52,8 @@ class DocProfileController extends Controller
     {
         $form_data = $request->validated();
 
+
+
         //lo slug del profilo corrisponde al nome e cognome del dottore
         $form_data['slug'] = DocProfile::generateSlug("doc" . "-" . $request->user()->name . "-" . $request->user()->name);
 
@@ -82,7 +84,11 @@ class DocProfileController extends Controller
 
         $form_data['user_id'] = Auth::id();
 
+
+
         $docProfile = DocProfile::create($form_data);
+
+
 
         if ($request->has('users')) {
             $docProfile->users()->attach($request->users);
@@ -91,6 +97,8 @@ class DocProfileController extends Controller
         if ($request->has('specializations')) {
             $docProfile->specializations()->attach($form_data['specializations']);
         }
+
+
 
         return redirect()->route('docProfile.show', $docProfile->id)->with('message', 'Il tuo nuovo progetto è stato creato');
     }
@@ -103,9 +111,16 @@ class DocProfileController extends Controller
      */
     public function show(DocProfile $docProfile)
     {
-        $users = Auth::user();
+        $userId = Auth::id();
         // dd($docProfile);
-        return view('docProfile.show', compact('docProfile', 'users'));
+        $docProfile = DocProfile::where('user_id', '=', $userId)->get();
+
+        $thereIsProfile = null;
+        foreach ($docProfile as $item) {
+            $thereIsProfile = $item->id;
+        }
+
+        return view('docProfile.show', compact('docProfile', 'userId', 'thereIsProfile'));
     }
 
     /**
