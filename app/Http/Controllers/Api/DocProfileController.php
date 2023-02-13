@@ -69,14 +69,14 @@ class DocProfileController extends Controller
 
                 ];
             } else {
-                $jsonData['doctors'][] = [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'surname' => $user->surname,
-                    'email' => $user->email,
-                    'specialization' => $user->specialization,
-                    'profile_id' => NULL,
-                ];
+                // $jsonData['doctors'][] = [
+                //     'id' => $user->id,
+                //     'name' => $user->name,
+                //     'surname' => $user->surname,
+                //     'email' => $user->email,
+                //     'specialization' => $user->specialization,
+                //     'profile_id' => NULL,
+                // ];
             }
         }
 
