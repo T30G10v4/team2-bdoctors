@@ -20,8 +20,6 @@ class DocProfileController extends Controller
 
         foreach ($users as $user) {
 
-
-
             $docProfile = DocProfile::where('user_id', '=', $user->id)->get();
 
             $thereIsProfile = null;
@@ -37,6 +35,8 @@ class DocProfileController extends Controller
                     ->select('specializations.name')
                     ->get();
 
+
+
                 $specializationsArray = [];
                 foreach ($specializations as $spec) {
                     array_push($specializationsArray, $spec->name);
@@ -44,12 +44,10 @@ class DocProfileController extends Controller
 
                 $jsonData['doctors'][] = [
                     'id' => $user->id,
-
-
                     'name' => $user->name,
                     'surname' => $user->surname,
                     'email' => $user->email,
-                    'specialization' => $user->specialization,
+                    'specialization' => $specializationsArray,
 
                     'profile_id' => $docProfile[0]->id,
                     'curriculum_vitae' => $docProfile[0]->curriculum_vitae,
@@ -58,7 +56,6 @@ class DocProfileController extends Controller
                     'tel' => $docProfile[0]->tel,
                     'services' => $docProfile[0]->services,
                     'slug' => $docProfile[0]->slug,
-
 
                 ];
             } else {
