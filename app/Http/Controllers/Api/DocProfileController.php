@@ -7,20 +7,22 @@ use App\Models\DocProfile;
 use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DocProfileController extends Controller
 {
     public function index()
     {
 
-        $jsonData = ['success' => true, 'doctors' => ['specializations' => []]];
+        $jsonData = ['success' => true, 'doctors' => []];
 
         $users = User::all();
 
         foreach ($users as $user) {
 
-            $docProfile = DocProfile::where('user_id', '=', $user->id)->get();
 
+
+            $docProfile = DocProfile::where('user_id', '=', $user->id)->get();
 
             $thereIsProfile = null;
             foreach ($docProfile as $item) {
@@ -28,13 +30,25 @@ class DocProfileController extends Controller
             }
 
             if ($thereIsProfile) {
+
+                $specializations = DB::table('specializations')
+                    ->join('doc_profile_specialization', 'specializations.id', '=', 'doc_profile_specialization.specialization_id')
+                    ->join('doc_profiles', 'doc_profiles.id', '=', 'doc_profile_specialization.doc_profile_id')
+                    ->select('specializations.name')
+                    ->get();
+
+                $specializationsArray = [];
+                foreach ($specializations as $spec) {
+                    array_push($specializationsArray, $spec->name);
+                }
+
                 $jsonData['doctors'][] = [
                     'id' => $user->id,
 
 
                     'name' => $user->name,
                     'surname' => $user->surname,
-                    'mail' => $user->mail,
+                    'email' => $user->email,
                     'specialization' => $user->specialization,
 
                     'profile_id' => $docProfile[0]->id,
@@ -45,13 +59,14 @@ class DocProfileController extends Controller
                     'services' => $docProfile[0]->services,
                     'slug' => $docProfile[0]->slug,
 
+
                 ];
             } else {
                 $jsonData['doctors'][] = [
                     'id' => $user->id,
                     'name' => $user->name,
                     'surname' => $user->surname,
-                    'mail' => $user->mail,
+                    'email' => $user->email,
                     'specialization' => $user->specialization,
                     'profile_id' => NULL,
                 ];
