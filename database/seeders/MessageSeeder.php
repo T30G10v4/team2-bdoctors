@@ -19,7 +19,7 @@ class MessageSeeder extends Seeder
     {
         for ($i = 0; $i < 50; $i++) {
             $message = new Message();
-            $message->doc_profile_id = 6;
+            $message->doc_profile_id = 1;
             $message->username = $faker->name(50);
             $message->slug = Str::slug($message->username, '-');
             $message->mail = $faker->email();

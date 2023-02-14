@@ -18,17 +18,20 @@ class MessageController extends Controller
     public function index()
     {
 
-        $doc_profile = DocProfile::where('user_id', '=', Auth::id())->get();
+        $docProfile = DocProfile::where('user_id', '=', Auth::id())->get();
 
+        $thereIsProfile = null;
+        foreach ($docProfile as $item) {
+            $thereIsProfile = $item->id;
+        }
 
-
-        foreach ($doc_profile as $single) {
+        foreach ($docProfile as $single) {
             $messages = Message::where('doc_profile_id', '=', $single->id)->get();
         }
 
 
         // tutti i messaggi che hanno doc_profile_id = id di docProfile
-        return view('docProfile.messages.index', compact('messages'));
+        return view('docProfile.messages.index', compact('messages', 'docProfile', 'thereIsProfile'));
     }
 
     /**
@@ -60,7 +63,13 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        return view('docProfile.messages.show', compact('message'));
+        $docProfile = DocProfile::where('user_id', '=', Auth::id())->get();
+
+        $thereIsProfile = null;
+        foreach ($docProfile as $item) {
+            $thereIsProfile = $item->id;
+        }
+        return view('docProfile.messages.show', compact('message', 'docProfile', 'thereIsProfile'));
     }
 
     /**
