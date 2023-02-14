@@ -1,7 +1,7 @@
-@extends('layouts.navigation')
+@extends('layouts.doc_admin')
 
 @section('content')
-    <div class="container">
+    <div class="container text-light">
         <h2 class="text-center">Edit Profile</h2>
         <div class="row justify-content-center">
             <div class="col-8">

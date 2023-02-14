@@ -29,9 +29,10 @@ class MessageController extends Controller
             $messages = Message::where('doc_profile_id', '=', $single->id)->get();
         }
 
+        $collectionDocProfile = 1;
 
         // tutti i messaggi che hanno doc_profile_id = id di docProfile
-        return view('docProfile.messages.index', compact('messages', 'docProfile', 'thereIsProfile'));
+        return view('docProfile.messages.index', compact('messages', 'docProfile', 'thereIsProfile', 'collectionDocProfile'));
     }
 
     /**
@@ -69,7 +70,10 @@ class MessageController extends Controller
         foreach ($docProfile as $item) {
             $thereIsProfile = $item->id;
         }
-        return view('docProfile.messages.show', compact('message', 'docProfile', 'thereIsProfile'));
+
+        $collectionDocProfile = 1;
+
+        return view('docProfile.messages.show', compact('message', 'docProfile', 'thereIsProfile', 'collectionDocProfile'));
     }
 
     /**

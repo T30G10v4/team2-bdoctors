@@ -19,6 +19,8 @@ class DashboardController extends Controller
             $thereIsProfile = $item->id;
         }
 
-        return view('dashboard', compact('docProfile', 'thereIsProfile'));
+        $collectionDocProfile = 1;
+
+        return view('dashboard', compact('docProfile', 'thereIsProfile', 'collectionDocProfile'));
     }
 }

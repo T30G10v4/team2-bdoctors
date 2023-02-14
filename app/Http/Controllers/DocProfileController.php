@@ -120,7 +120,9 @@ class DocProfileController extends Controller
             $thereIsProfile = $item->id;
         }
 
-        return view('docProfile.show', compact('docProfile', 'userId', 'thereIsProfile'));
+        $collectionDocProfile = 1;
+
+        return view('docProfile.show', compact('docProfile', 'userId', 'thereIsProfile', 'collectionDocProfile'));
     }
 
     /**
@@ -134,7 +136,12 @@ class DocProfileController extends Controller
         $curriculumProfile = $docProfile->curriculum_vitae;
 
         $specializations = Specialization::all();
-        return view('docProfile.edit', compact('docProfile', 'specializations', 'curriculumProfile'));
+
+        $thereIsProfile = $docProfile->id;
+
+        $collectionDocProfile = 0;
+
+        return view('docProfile.edit', compact('docProfile', 'specializations', 'curriculumProfile', 'collectionDocProfile', 'thereIsProfile'));
     }
 
     /**

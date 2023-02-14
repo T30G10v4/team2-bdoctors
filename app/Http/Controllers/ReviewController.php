@@ -30,9 +30,10 @@ class ReviewController extends Controller
             $reviews = Review::where('doc_profile_id', '=', $single->id)->get();
         }
 
+        $collectionDocProfile = 1;
 
         // tutti i messaggi che hanno doc_profile_id = id di docProfile
-        return view('docProfile.reviews.index', compact('reviews', 'docProfile', 'thereIsProfile'));
+        return view('docProfile.reviews.index', compact('reviews', 'docProfile', 'thereIsProfile', 'collectionDocProfile'));
     }
 
     /**
@@ -71,7 +72,9 @@ class ReviewController extends Controller
             $thereIsProfile = $item->id;
         }
 
-        return view('docProfile.reviews.show', compact('review', 'docProfile', 'thereIsProfile'));
+        $collectionDocProfile = 1;
+
+        return view('docProfile.reviews.show', compact('review', 'docProfile', 'thereIsProfile', 'collectionDocProfile'));
     }
 
     /**
