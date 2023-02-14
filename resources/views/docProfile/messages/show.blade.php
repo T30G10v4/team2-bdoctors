@@ -9,7 +9,7 @@
             <h2>Message from {{ $message->username }}</h2>
             <h3>Mail: {{ $message->mail }}</h3>
             <h4>Arrived: {{ $message->created_at }}</h4>
-            <h5>text: {{ $message->text }}</h5>
+            <p>{{ $message->text }}</p>
         </div>
     </div>
 @endsection

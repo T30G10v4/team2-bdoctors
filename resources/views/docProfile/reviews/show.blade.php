@@ -9,7 +9,7 @@
         <div class="row">
             <h2>Review from {{ $review->username }}</h2>
             <h3>Vote: {{ $review->vote }}</h3>
-            <h4>text: {{ $review->text }}</h4>
+            <p>{{ $review->text }}</p>
 
         </div>
     </div>

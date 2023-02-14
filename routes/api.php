@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/doc', [DocProfileController::class, 'index']);
+// /doc/{id}
+// /doc/spec/{spec}
 Route::get('/spec', [SpecsController::class, 'index']);

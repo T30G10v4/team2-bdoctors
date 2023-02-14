@@ -12,8 +12,7 @@ class SpecsController extends Controller
     public function index()
     {
         $jsonData = ['success' => true, 'specs' => []];
-        $specs = DB::table('specializations')->select('specializations.name')->get();
-
+        $specs = DB::table('specializations')->select('specializations.name', 'specializations.id')->get();
 
         array_push($jsonData['specs'], $specs);
 
