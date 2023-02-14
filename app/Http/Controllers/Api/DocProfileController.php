@@ -82,4 +82,39 @@ class DocProfileController extends Controller
 
         return response()->json($jsonData);
     }
+
+    public function show($slug)
+    {
+
+        //$doctor = [];
+        $docProfile = DocProfile::where('slug', '=', $slug)->get();
+        $user = User::where('id', '=', $docProfile[0]->user_id)->get();
+
+        $specializations = DB::table('specializations')
+            ->join('doc_profile_specialization', 'specializations.id', '=', 'doc_profile_specialization.specialization_id')
+            ->join('doc_profiles', 'doc_profile_specialization.doc_profile_id', '=', 'doc_profiles.id')
+            ->select('specializations.name')->where('doc_profiles.id', '=', $docProfile[0]->id)
+            ->get();
+
+        //array_merge($doctor, $docProfile[0], $user[0], $specializations);
+
+        $jsonData = ['success' => true, 'doctor' => [
+
+            $user[0],
+
+            $docProfile[0],
+
+            $specializations,
+
+        ]];
+
+
+
+        // $results = DB::table('doc_profiles')
+        //     ->join('users', 'users.doc_profile_id', '=', 'doc_profiles.id')
+        //     ->select('specializations.name')->where('doc_profiles.slug', '=', $slug)
+        //     ->get();
+
+        return response()->json($jsonData);
+    }
 }
