@@ -12,7 +12,7 @@
                     @method('PUT')
                     @csrf
                     <div class="mb-3">
-                        <label for="studio_address">Studio Address</label>
+                        <label for="studio_address">Update Studio Address</label>
                         <input type="text" id="studio_address" name="studio_address"
                             value="{{ old('studio_address', $docProfile->studio_address) }}"
                             class="form-control @error('studio_address') is-invalid @enderror">
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="tel">Telephone</label>
+                        <label for="tel">Update Telephone</label>
                         <input type="text" id="tel" name="tel" value="{{ old('tel', $docProfile->tel) }}"
                             class="form-control @error('tel') is-invalid @enderror">
                         @error('tel')
@@ -35,12 +35,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="services">Services</label>
+                        <label for="services">Update Services</label>
                         <textarea name="services" id="services" rows="10" class="form-control">{{ old('services', $docProfile->services) }}</textarea>
                     </div>
 
                     <div class="form-group mb-3">
-                        <h4>Specializations</h4>
+                        <h4>Update Specializations</h4>
                         @foreach ($specializations as $specialization)
                             <div class="form-check">
 
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group mb-3 ">
-                        <label for="photo">Photo</label>
+                        <label for="photo">Update Photo</label>
                         <input type="file" name="photo" id="photo"
                             class="form-control @error('photo') is-invalid @enderror">
                         @error('photo')
@@ -76,7 +76,7 @@
 
                     {{-- CURRICULA --}}
                     <div class="form-group mb-3">
-                        <label for="curriculum_vitae">Curriculum Vitae</label>
+                        <label for="curriculum_vitae">Update Curriculum Vitae</label>
                         <input type="file" name="curriculum_vitae" id="curriculum_vitae"
                             class="form-control @error('curriculum_vitae') is-invalid @enderror">
                         @error('curriculum_vitae')
@@ -87,7 +87,7 @@
                     </div>
 
                     {{-- anteprima curriculum che si aggiorna tramite attributo id collegato ad app.js --}}
-                    <div class="mt-3">
+                    <div class="mt-3 cv_edit">
                         <embed src="{{ asset('storage/' . $curriculumProfile) }}" id="curriculum_preview" width="600"
                             height="500" alt="pdf-curriculum" />
                     </div>

@@ -32,14 +32,16 @@ deleteBtns.forEach((btn)=>{
 const coverImageInput = document.getElementById("photo");
 const imagePreview = document.getElementById("image_preview");
 
+const cvEdit = document.querySelector(".cv_edit");
+const cvCreate = document.querySelector(".cv_create");
+
 if  (!coverImageInput || coverImageInput.value == ""){
     if(imagePreview){
-        if( !coverImageInput && imagePreview.classList.contains('filled') ) { 
+        if( !coverImageInput ) { 
+            //in show
             imagePreview.classList.remove("d-none");
-            console.log('removed d-none')  
         } else {
             if (coverImageInput && imagePreview) {
-
                 coverImageInput.addEventListener("change", function () {
                     const uploadedFile = this.files[0];
                     console.log(uploadedFile);
@@ -51,26 +53,23 @@ if  (!coverImageInput || coverImageInput.value == ""){
                         reader.readAsDataURL(uploadedFile);
         
                         imagePreview.classList.remove("d-none");
-                        imagePreview.classList.add("filled");
-        
-                        console.log('removed d-none, add filled ')
                     };
                 })
             }
 
-            if(coverImageInput && coverImageInput.value == "" && imagePreview.classList.contains('filled'))
+            if(coverImageInput && coverImageInput.value == "" && !cvCreate)
             {
+                imagePreview.classList.remove("d-none"); 
+            }
+            //in edit
+            else if (coverImageInput && coverImageInput.value == "" && cvEdit)
+            { 
                 imagePreview.classList.remove("d-none");
-                
-                console.log("rimuovo d-none perchè input esiste, non è vuoto e ha filled ")
-            //IN create e in edit se non caricato nessun file precedentemente
-            }else if (coverImageInput && coverImageInput.value == "" && !imagePreview.classList.contains('filled')
-             ){ 
+            }
+            //in create
+            else if (coverImageInput && coverImageInput.value == "" && cvCreate)
+            {
                 imagePreview.classList.add("d-none");
-                console.log("add d-none perchè input esiste, ma è vuoto e filled false")
-            }else{
-                imagePreview.classList.add("d-none");
-                console.log("add d-none (l'input esiste ma è vuoto) ")
             }
 
         }
@@ -84,18 +83,16 @@ if  (!coverImageInput || coverImageInput.value == ""){
 const curriculumInput = document.getElementById("curriculum_vitae");
 const curriculumPreview = document.getElementById("curriculum_preview");
 
+
 //situazione in create, e in show e in edit 
 //quando il campo input non c'è O non c'è nessun file selezionato 
 if  (!curriculumInput || curriculumInput.value == ""){
     if(curriculumPreview){
-        if( !curriculumInput && curriculumInput.classList.contains('filled') ) { 
-
+        if( !curriculumInput  ) {
             //in show
             curriculumPreview.classList.remove("d-none");
-            console.log('removed d-none')  
         } else { 
             if (curriculumInput && curriculumPreview) {
-
                 curriculumInput.addEventListener("change", function () {
                     const uploadedFile = this.files[0];
                     if (uploadedFile) {
@@ -106,31 +103,29 @@ if  (!curriculumInput || curriculumInput.value == ""){
                         reader.readAsDataURL(uploadedFile);
             
                         curriculumPreview.classList.remove("d-none");
-                        curriculumPreview.classList.add("filled");
-
-                        console.log('removed d-none, add filled, true ')
                     }
-                });
+                })
             }
 
-            //in edit se ho caricato precedentemente un file NON FUNZIONA, LA CLASSE NON FILLED NON VIENE SALVATA
-            if(curriculumInput && curriculumInput.value == "" && curriculumPreview.classList.contains('filled'))
+
+            //in edit se ho caricato precedentemente un file
+            if(curriculumInput && curriculumInput.value == "" && !cvCreate) 
             {
                 curriculumPreview.classList.remove("d-none");
-                
-                console.log("rimuovo d-none perchè input esiste, non è vuoto e ha filled ")
-            //IN create e in edit se non caricato nessun file precedentemente
-            }else if (curriculumInput && curriculumInput.value == "" && !curriculumPreview.classList.contains('filled')
-             ){ 
+            //in edit
+            }
+            else if(curriculumInput && curriculumInput.value == "" && cvEdit  ){ 
+                curriculumPreview.classList.remove("d-none");
+            }
+            //in create
+            else if (curriculumInput && curriculumInput.value == "" && cvCreate )
+             { 
                 curriculumPreview.classList.add("d-none");
-                console.log("add d-none perchè input esiste, ma è vuoto e filled false")
-            }else{
-                curriculumPreview.classList.add("d-none");
-                console.log("add d-none (l'input esiste ma è vuoto) ")
             }
         }
     }
 }
+
 
 //---------FUNZIONALITA' DI VALIDAZIONE PASSWORD--------------
 
@@ -138,20 +133,16 @@ const regBtn = document.getElementById("reg-btn");
 const pwdInput = document.getElementById("password");
 const pwdConfirmInput = document.getElementById("password-confirm");
 
-regBtn.addEventListener("click", (event) => {
-
-  if (pwdInput.value === pwdConfirmInput.value) {
-
-    //console.log("PASSWORD UGUALE");
-
-    }   
-
-    else
-    {
-       //console.log("PASSWORD NON UGUALE");
-       event.preventDefault();
-       const pwdCheck = document.getElementById("password-check");
-       pwdCheck.innerHTML = "Not-matched Password";
-    }  
-
-});
+if(regBtn){
+    regBtn.addEventListener("click", (event) => {
+    
+      if (pwdInput.value === pwdConfirmInput.value) {
+        //console.log("PASSWORD UGUALI");
+        }else{
+           //console.log("PASSWORD NON UGUALI");
+           event.preventDefault();
+           const pwdCheck = document.getElementById("password-check");
+           pwdCheck.innerHTML = "Not-matched Password";
+        }  
+    });
+}

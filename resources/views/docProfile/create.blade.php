@@ -93,7 +93,7 @@
                     </div>
 
                     {{-- anteprima curriculum che si aggiorna tramite attributo id collegato ad app.js --}}
-                    <div class="mt-3">
+                    <div class="mt-3 cv_create">
                         <embed src="{{ asset('storage/' . $curriculumProfile) }}" id="curriculum_preview" width="600"
                             height="500" alt="pdf-curriculum" />
                     </div>
