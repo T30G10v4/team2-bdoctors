@@ -24,10 +24,9 @@
                         <div class="col">
                             <p>Dr. {{ Auth::user()->name }} {{ Auth::user()->surname }}</p>
                         </div>
-                        <div class="col">
-                            {{-- Prima specializzazione - da tirare fuori dal db --}}
-                            <p>Cardiology</p>
-                        </div>
+                        {{-- <div class="col">
+                            <p>Cardiology</p> Prima specializzazione (da tirare fuori dal db)
+                        </div> --}}
                         <div class="col">
                             <p>{{ Auth::user()->email }}</p>
                         </div>
