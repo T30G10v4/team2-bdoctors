@@ -78,7 +78,7 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }} *</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" {{-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" --}}
+                                    <input id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email">
 
@@ -116,6 +116,8 @@
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
 
+
+
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -132,11 +134,14 @@
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
+                                <div id="password-check" class="text-danger"></div>
                             </div>
+
+
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" id="reg-btn">
                                         {{ __('Register') }}
                                     </button>
                                 </div>

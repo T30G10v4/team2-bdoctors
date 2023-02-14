@@ -5,6 +5,35 @@ import.meta.glob([
     '../img/**'
 ]);
 
+//---------FUNZIONALITA' DI VALIDAZIONE PASSWORD--------------
+
+const regBtn = document.getElementById("reg-btn");
+const pwdInput = document.getElementById("password");
+const pwdConfirmInput = document.getElementById("password-confirm");
+
+regBtn.addEventListener("click", (event) => {
+
+  if (pwdInput.value === pwdConfirmInput.value) {
+
+    //console.log("PASSWORD UGUALE");
+
+    }   
+
+    else
+    {
+       //console.log("PASSWORD NON UGUALE");
+       event.preventDefault();
+       const pwdCheck = document.getElementById("password-check");
+       pwdCheck.innerHTML = "Not-matched Password";
+    }  
+
+});
+
+
+
+
+
+
 
 //---------FUNZIONALITA' DI CONFERMA AL DELETE--------------
 
