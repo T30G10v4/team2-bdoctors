@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DocFromSpecController;
 use App\Http\Controllers\Api\DocProfileController;
 use App\Http\Controllers\Api\SpecsController;
 use Illuminate\Http\Request;
@@ -23,4 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/doc', [DocProfileController::class, 'index']);
 // /doc/{id}
 // /doc/spec/{spec}
+Route::get('/doc/spec/{id}', [DocFromSpecController::class, 'show']);
 Route::get('/spec', [SpecsController::class, 'index']);
