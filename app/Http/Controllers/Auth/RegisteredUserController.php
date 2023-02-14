@@ -60,13 +60,4 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
-
-    public function messages()
-    {
-        return [
-            'email' => 'blablabla',
-
-
-        ];
-    }
 }

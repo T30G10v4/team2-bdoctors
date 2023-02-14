@@ -17,7 +17,16 @@ class SpecializationSeeder extends Seeder
     public function run()
     {
 
-        $specializations = ['Cardiologia', 'Dermatologia', 'Urologia', 'Oncologia', 'Ginecologia', 'Neurologia'];
+        $specializations = [
+            'Cardiology',
+            'Dermatology',
+            'Urology',
+            'Oncology',
+            'Ginecology',
+            'Neurology',
+            'Fisiology',
+            'Radiology'
+        ];
 
         foreach ($specializations as $specialization) {
             $new_specialization = new Specialization();

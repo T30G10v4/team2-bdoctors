@@ -12,14 +12,31 @@
                     @csrf
                     <div class="mb-3">
                         <label for="studio_address">Studio Address</label>
-                        <input type="text" id="studio_address" name="studio_address" class="form-control"
-                            value="{{ old('studio_address') }}">
+                        <input type="text" id="studio_address" name="studio_address" value="{{ old('studio_address') }}"
+                            class="form-control
+                            @error('studio_address')
+                            is-invalid
+                            @enderror">
+                        @error('studio_address')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label for="tel">Telephone</label>
-                        <input type="tel" id="tel" name="tel" class="form-control" pattern="[0-9]{9-12}"
-                            value="{{ old('tel') }}">
+                        <input type="tel" id="tel" name="tel" pattern="[0-9]{9-12}"
+                            value="{{ old('tel') }}"
+                            class="form-control
+                            @error('tel')
+                            is-invalid
+                            @enderror">
+                        @error('tel')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">

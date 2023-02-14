@@ -13,16 +13,24 @@
                     @csrf
                     <div class="mb-3">
                         <label for="studio_address">Studio Address</label>
-                        <input type="text" id="studio_address" name="studio_address" class="form-control"
-                            value="{{ old('studio_address', $docProfile->studio_address) }}">
+                        <input type="text" id="studio_address" name="studio_address"
+                            value="{{ old('studio_address', $docProfile->studio_address) }}"
+                            class="form-control @error('studio_address') is-invalid @enderror">
+                        @error('studio_address')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
                         <label for="tel">Telephone</label>
-                        <input type="text" id="tel" name="tel" class="form-control"
-                            value="{{ old('tel', $docProfile->tel) }}">
+                        <input type="text" id="tel" name="tel" value="{{ old('tel', $docProfile->tel) }}"
+                            class="form-control @error('tel') is-invalid @enderror">
                         @error('tel')
-                            <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
 
@@ -50,7 +58,13 @@
 
                     <div class="form-group mb-3 ">
                         <label for="photo">Photo</label>
-                        <input type="file" name="photo" id="photo" class="form-control">
+                        <input type="file" name="photo" id="photo"
+                            class="form-control @error('photo') is-invalid @enderror">
+                        @error('photo')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
 
                         {{-- anteprima immagine che si aggiorna tramite attributo id collegato ad app.js --}}
                         <div class="mt-3">
@@ -64,7 +78,7 @@
                     <div class="form-group mb-3">
                         <label for="curriculum_vitae">Curriculum Vitae</label>
                         <input type="file" name="curriculum_vitae" id="curriculum_vitae"
-                            class="curriculum_edit form-control @error('curriculum_vitae') is-invalid @enderror">
+                            class="form-control @error('curriculum_vitae') is-invalid @enderror">
                         @error('curriculum_vitae')
                             <div class="invalid-feedback">
                                 {{ $message }}
