@@ -18,17 +18,21 @@ class ReviewController extends Controller
     public function index()
     {
 
-        $doc_profile = DocProfile::where('user_id', '=', Auth::id())->get();
+        $docProfile = DocProfile::where('user_id', '=', Auth::id())->get();
+
+        $thereIsProfile = null;
+        foreach ($docProfile as $item) {
+            $thereIsProfile = $item->id;
+        }
 
 
-
-        foreach ($doc_profile as $single) {
+        foreach ($docProfile as $single) {
             $reviews = Review::where('doc_profile_id', '=', $single->id)->get();
         }
 
 
         // tutti i messaggi che hanno doc_profile_id = id di docProfile
-        return view('docProfile.reviews.index', compact('reviews'));
+        return view('docProfile.reviews.index', compact('reviews', 'docProfile', 'thereIsProfile'));
     }
 
     /**
@@ -60,7 +64,14 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
-        return view('docProfile.reviews.show', compact('review'));
+        $docProfile = DocProfile::where('user_id', '=', Auth::id())->get();
+
+        $thereIsProfile = null;
+        foreach ($docProfile as $item) {
+            $thereIsProfile = $item->id;
+        }
+
+        return view('docProfile.reviews.show', compact('review', 'docProfile', 'thereIsProfile'));
     }
 
     /**

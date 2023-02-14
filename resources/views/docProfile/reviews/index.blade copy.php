@@ -1,9 +1,9 @@
-@extends('layouts.navigation')
+@extends('layouts.doc_admin')
 
 @section('content')
-    <h2>Reviews</h2>
+    <h2 class="text-light">reviews</h2>
 
-    <a class="btn btn-light" href="{{ url()->previous() }}">Back</a>
+    <a class="btn btn-light" href="{{ url()->previous() }}">Torna indietro</a>
 
     <table class="table table-dark">
         <thead>
