@@ -1,0 +1,3 @@
+error spec non tiene id al errore generito [X]
+preview edit Profile []
+controllo di main spec + controllo nelle api [] 

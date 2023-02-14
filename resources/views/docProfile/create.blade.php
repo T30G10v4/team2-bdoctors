@@ -51,7 +51,7 @@
 
                                 <input type="checkbox" name="specializations[]"
                                     id="specialization-{{ $specialization->id }}" class="form-check-input"
-                                    value="{{ $specialization->id }}">
+                                    value="{{ $specialization->id }}" @checked(in_array($specialization->id, old('specializations', [])))>
                                 <label for="specialization-{{ $specialization->id }}"
                                     class="form-check-label">{{ $specialization->name }}</label>
                             </div>
