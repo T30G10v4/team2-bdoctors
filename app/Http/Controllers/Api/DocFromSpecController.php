@@ -6,32 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\countOf;
+
 class DocFromSpecController extends Controller
 {
     public function show($id)
     {
-        $numberOfReviews = 0;
-        $sumVote = 0;
 
-        $reviews = DB::table('doc_profile_specialization')
-            ->join('doc_profiles', 'doc_profile_specialization.doc_profile_id', '=', 'doc_profiles.id')
-            ->join('reviews', 'doc_profiles.id', '=', 'reviews.doc_profile_id')
-            ->select('reviews.vote')
-            ->where('specialization_id', '=', $id)
-            ->get();
-
-        foreach ($reviews as $review) {
-            $sumVote = $sumVote + $review->vote;
-            $numberOfReviews += 1;
-        }
-
-        $voteMedia = $sumVote / $numberOfReviews;
-
-        $voteMedia = round($voteMedia, 1);
-
-        $jsonData = ['success' => true, 'doctors' => []];
-
-        $specializations = DB::table('doc_profile_specialization')
+        $docsForSpecs = DB::table('doc_profile_specialization')
             ->join('doc_profiles', 'doc_profile_specialization.doc_profile_id', '=', 'doc_profiles.id')
             ->join('users', 'doc_profiles.user_id', '=', 'users.id')
             ->select(
@@ -46,13 +28,35 @@ class DocFromSpecController extends Controller
                 'doc_profiles.slug',
 
             )
+
             ->where('specialization_id', '=', $id)
             ->get();
 
-        array_push($jsonData, $voteMedia);
 
-        array_push($jsonData, $specializations);
+        foreach ($docsForSpecs as $doc) {
+            $sumVote = 0;
+            $numVote = 0;
 
-        return response()->json($jsonData);
+            $reviewsForDoc = DB::table('reviews')
+                ->select('reviews.vote')
+                ->where('reviews.doc_profile_id', $doc->id)
+                ->get();
+
+
+            foreach ($reviewsForDoc as $revForDoc) {
+                $sumVote = $sumVote + $revForDoc->vote;
+                $numVote += 1;
+            }
+            if ($numVote !== 0) {
+                $mediaVote = $sumVote / $numVote;
+                $mediaVote = round($mediaVote, 1);
+            } else {
+                $mediaVote = 0;
+            }
+
+            $doc->mediaVote = $mediaVote;
+        }
+
+        return response()->json($docsForSpecs);
     }
 }
