@@ -91,13 +91,23 @@ class DocProfileController extends Controller
         $docProfile = DocProfile::where('slug', '=', $slug)->get();
         $user = User::where('id', '=', $docProfile[0]->user_id)->get();
 
+
         $specializations = DB::table('specializations')
             ->join('doc_profile_specialization', 'specializations.id', '=', 'doc_profile_specialization.specialization_id')
             ->join('doc_profiles', 'doc_profile_specialization.doc_profile_id', '=', 'doc_profiles.id')
             ->select('specializations.name')->where('doc_profiles.id', '=', $docProfile[0]->id)
             ->get();
 
+<<<<<<< HEAD
         $reviewsCollection = Review::where('doc_profile_id', $docProfile[0]->id)->get();
+=======
+        $specializationsDocArray = [];
+        foreach ($specializations as $spec) {
+            array_push($specializationsDocArray, $spec->name);
+        }
+
+        //array_merge($doctor, $docProfile[0], $user[0], $specializations);
+>>>>>>> e6018a9a9daf0d4c1f98a141ad4f4234b39206ea
 
         $jsonData = ['success' => true, 'doctor' => [
 
@@ -105,7 +115,7 @@ class DocProfileController extends Controller
 
             $docProfile[0],
 
-            $specializations,
+            $specializationsDocArray,
 
             $reviewsCollection,
 
