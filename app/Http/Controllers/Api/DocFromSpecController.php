@@ -10,6 +10,24 @@ class DocFromSpecController extends Controller
 {
     public function show($id)
     {
+        $numberOfReviews = 0;
+        $sumVote = 0;
+
+        $reviews = DB::table('doc_profile_specialization')
+            ->join('doc_profiles', 'doc_profile_specialization.doc_profile_id', '=', 'doc_profiles.id')
+            ->join('reviews', 'doc_profiles.id', '=', 'reviews.doc_profile_id')
+            ->select('reviews.vote')
+            ->where('specialization_id', '=', $id)
+            ->get();
+
+        foreach ($reviews as $review) {
+            $sumVote = $sumVote + $review->vote;
+            $numberOfReviews += 1;
+        }
+
+        $voteMedia = $sumVote / $numberOfReviews;
+
+        $voteMedia = round($voteMedia, 1);
 
         $jsonData = ['success' => true, 'doctors' => []];
 
@@ -31,7 +49,7 @@ class DocFromSpecController extends Controller
             ->where('specialization_id', '=', $id)
             ->get();
 
-
+        array_push($jsonData, $voteMedia);
 
         array_push($jsonData, $specializations);
 
