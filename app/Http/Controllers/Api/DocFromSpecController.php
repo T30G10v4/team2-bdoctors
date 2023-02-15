@@ -54,6 +54,8 @@ class DocFromSpecController extends Controller
                 $mediaVote = 0;
             }
 
+            $doc->sponsorized = TRUE;
+            $doc->numReviews = $numVote;
             $doc->mediaVote = $mediaVote;
         }
 
