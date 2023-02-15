@@ -115,7 +115,7 @@ class DocProfileController extends Controller
 
             $specializationsDocArray,
 
-            $reviewsCollection,
+            "review" => $reviewsCollection,
 
         ]];
 
