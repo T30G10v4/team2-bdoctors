@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\DocProfile;
+use App\Models\Review;
 use App\Models\Specialization;
 use App\Models\User;
 use Faker\Guesser\Name;
@@ -96,7 +97,7 @@ class DocProfileController extends Controller
             ->select('specializations.name')->where('doc_profiles.id', '=', $docProfile[0]->id)
             ->get();
 
-        //array_merge($doctor, $docProfile[0], $user[0], $specializations);
+        $reviewsCollection = Review::where('doc_profile_id', $docProfile[0]->id)->get();
 
         $jsonData = ['success' => true, 'doctor' => [
 
@@ -106,14 +107,9 @@ class DocProfileController extends Controller
 
             $specializations,
 
+            $reviewsCollection,
+
         ]];
-
-
-
-        // $results = DB::table('doc_profiles')
-        //     ->join('users', 'users.doc_profile_id', '=', 'doc_profiles.id')
-        //     ->select('specializations.name')->where('doc_profiles.slug', '=', $slug)
-        //     ->get();
 
         return response()->json($jsonData);
     }

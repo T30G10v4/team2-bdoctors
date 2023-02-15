@@ -21,8 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/doc/{slug}', [DocProfileController::class, 'show']);
+Route::get('/doc/{slug}', [DocProfileController::class, 'show']); //tutto recensioni 
 // /doc/{id}
 // /doc/spec/{spec}
-Route::get('/doc/spec/{id}', [DocFromSpecController::class, 'show']);
+Route::get('/doc/spec/{id}', [DocFromSpecController::class, 'show']); //solo media recensioni
 Route::get('/spec', [SpecsController::class, 'index']);
