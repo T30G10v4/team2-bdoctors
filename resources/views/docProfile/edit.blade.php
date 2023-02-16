@@ -69,8 +69,7 @@
                         {{-- anteprima immagine che si aggiorna tramite attributo id collegato ad app.js --}}
                         <div class="mt-3">
                             <img src="{{ asset('storage/' . $docProfile->photo) }}" id="image_preview"
-                                class="photo_preview_edit" alt="{{ 'Cover image di ' . $docProfile->slug }}"
-                                style="max-width:300px">
+                                class="photo_preview_edit" alt="" style="max-width:300px">
                         </div>
                     </div>
 

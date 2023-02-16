@@ -18,11 +18,11 @@ class ReviewSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 60; $i++) {
+        for ($i = 0; $i < 160; $i++) {
             $review = new Review();
-            $review->doc_profile_id = 1;
+            $review->doc_profile_id = 3;
             $review->text = $faker->text(100);
-            $review->vote = $faker->numberBetween(1, 5);
+            $review->vote = 5; //$faker->numberBetween(1, 5);
             $review->username = $faker->name();
 
             $review->save();

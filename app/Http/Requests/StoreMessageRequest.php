@@ -13,7 +13,7 @@ class StoreMessageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'doc_profile_id' => ['numeric'],
+            'username' => ['max:255'],
+            'mail' => ['email', 'regex:/(.+)@(.+).(.+)/i']
+
         ];
     }
 }
