@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="col mb-3">
-                            <a class="btn btn-secondary w-100" href="{{ route('dashboard') }}">Dashboard</a>
+                            <a class="btn btn-secondary w-100" href="{{ route('stats') }}">Dashboard</a>
                         </div>
 
                         <div class="col mb-3">
