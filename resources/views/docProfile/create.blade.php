@@ -1,7 +1,7 @@
-@extends('layouts.doc_admin')
+@extends('layouts.navigation')
 
 @section('content')
-    <div class="container text-light">
+    <div class="container">
         <h2 class="text-center">Create Profile</h2>
         <div class="row justify-content-center">
             <div class="col-8">

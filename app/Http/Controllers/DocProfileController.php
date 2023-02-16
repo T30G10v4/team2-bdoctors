@@ -39,7 +39,9 @@ class DocProfileController extends Controller
 
         $specializations = Specialization::all();
 
-        return view('docProfile.create', compact('specializations', 'curriculumProfile'));
+        $thereIsProfile = 0;
+
+        return view('docProfile.create', compact('specializations', 'curriculumProfile', 'thereIsProfile'));
     }
 
     /**
