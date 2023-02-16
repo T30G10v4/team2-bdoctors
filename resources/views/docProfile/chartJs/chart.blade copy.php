@@ -1,4 +1,4 @@
-@extends('layouts.navigation')
+@extends('layouts.doc_admin')
 
 @section('content')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -30,7 +30,7 @@
     <script>
         $(function() {
             //get the bar chart canvas
-            var cData = JSON.parse(`<?php echo $dataMessage['chart_dataMessage']; ?>`);
+            var cData = JSON.parse(`<?php echo $chart_dataMessage; ?>`);
             var ctx = $("#bar-chart");
 
             //bar chart data
@@ -95,7 +95,7 @@
 
         $(function() {
             //get the line chart canvas
-            var cData = JSON.parse(`<?php echo $dataReview['chart_dataReview']; ?>`);
+            var cData = JSON.parse(`<?php echo $chart_dataReview; ?>`);
             var ctx = $("#line-chart");
 
             //line chart data

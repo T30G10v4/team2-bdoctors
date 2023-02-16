@@ -24,6 +24,13 @@ class ChartJSController extends Controller
         $userId = Auth::id();
         $docProfile = DocProfile::where('user_id', '=', $userId)->get();
 
+        $thereIsProfile = null;
+        foreach ($docProfile as $item) {
+            $thereIsProfile = $item->id;
+        }
+
+        $collectionDocProfile = 1;
+
         foreach ($docProfile as $item) {
             $docId = $item->id;
         }
@@ -61,6 +68,16 @@ class ChartJSController extends Controller
 
         $dataReview['chart_dataReview'] = json_encode($dataReview);
 
-        return view('docProfile.chartJs.chart', $dataMessage, $dataReview);
+        return view(
+            'docProfile.chartJs.chart',
+            //'dashboard',
+            [
+                'thereIsProfile' => $thereIsProfile,
+                'dataMessage' => $dataMessage,
+                'dataReview' => $dataReview,
+                'docProfile' => $docProfile,
+                'collectionDocProfile' => $collectionDocProfile
+            ]
+        );
     }
 }

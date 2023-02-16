@@ -90,7 +90,9 @@ class DocProfileController extends Controller
 
         $docProfile = DocProfile::create($form_data);
 
+        // $user = User::where('id', '=', Auth::id());
 
+        // $user->doc_profile_id = $docProfile->id; // $docProfile->id;
 
         if ($request->has('users')) {
             $docProfile->users()->attach($request->users);
