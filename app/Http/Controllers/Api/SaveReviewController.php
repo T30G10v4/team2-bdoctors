@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreReviewRequest;
-use App\Models\DocProfile;
 use App\Models\Review;
 use Illuminate\Http\Request;
 

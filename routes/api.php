@@ -29,5 +29,6 @@ Route::get('/doc/spec/{id}', [DocFromSpecController::class, 'show']);
 
 Route::get('/spec', [SpecsController::class, 'index']);
 
-Route::post('/savemessage/{id}', [SaveMessageController::class, 'store']); //Crea nuovo messaggio
-Route::post('/savereview/{id}', [SaveReviewController::class, 'store']); //Crea nuova recensione
+Route::post('/savemessage/{id}', [SaveMessageController::class, 'store']);
+
+Route::post('/savereview/{id}', [SaveReviewController::class, 'store']);
