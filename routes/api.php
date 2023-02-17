@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\DocFromSpecController;
 use App\Http\Controllers\Api\DocProfileController;
 use App\Http\Controllers\Api\SaveMessageController;
+use App\Http\Controllers\Api\SaveReviewController;
 use App\Http\Controllers\Api\SpecsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,4 @@ Route::get('/doc/spec/{id}', [DocFromSpecController::class, 'show']);
 Route::get('/spec', [SpecsController::class, 'index']);
 
 Route::post('/savemessage/{id}', [SaveMessageController::class, 'store']); //Crea nuovo messaggio
+Route::post('/savereview/{id}', [SaveReviewController::class, 'store']); //Crea nuova recensione
