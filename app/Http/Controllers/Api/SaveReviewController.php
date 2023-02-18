@@ -17,7 +17,7 @@ class SaveReviewController extends Controller
         $review = new Review();
         $review->doc_profile_id = $id;
         $review->username = $request->input('reviewUsername');
-        $review->vote = (int)$request->input('reviewVote');
+        $review->vote = $request->input('reviewVote');
         $review->text = $request->input('reviewText');
 
         $review->save();

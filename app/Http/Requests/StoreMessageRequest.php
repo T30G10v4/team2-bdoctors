@@ -26,8 +26,8 @@ class StoreMessageRequest extends FormRequest
         return [
             'doc_profile_id' => ['numeric'],
             'username' => ['max:255'],
-            'mail' => ['email', 'regex:/(.+)@(.+).(.+)/i']
-
+            'mail' => ['email', 'regex:/(.+)@(.+).(.+)/i'],
+            'text' => ['text']
         ];
     }
 }
