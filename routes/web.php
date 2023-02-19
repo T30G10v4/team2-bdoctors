@@ -39,6 +39,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('messages', MessageController::class)->only(['index', 'show']);
     Route::resource('reviews', ReviewController::class)->only(['index', 'show']);
     Route::get('my-stats', [ChartJSController::class, 'index'])->name('stats');
+    Route::resource('promos', PromoController::class)->only(['index', 'show']);
 });
 
 
