@@ -32,6 +32,6 @@ class PromoController extends Controller
             $thereIsProfile = $item->id;
         }
 
-        return view('docProfile.sponsorships.show', compact('promo', 'docProfile', 'thereIsProfile', 'collectionDocProfile'));;
+        return view('docProfile.sponsorships.show', compact('promo', 'docProfile', 'thereIsProfile', 'collectionDocProfile'));
     }
 }

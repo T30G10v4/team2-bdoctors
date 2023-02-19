@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\DocProfile;
+use App\Models\Message;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +15,8 @@ class DashboardController extends Controller
 
         $userId = Auth::id();
         $docProfile = DocProfile::where('user_id', '=', $userId)->get();
+        //$messages = Message::where('doc_profile_id', $docProfile[0]->id)->orderBy('created_at', 'DESC')->limit(3)->get();
+        //$reviews = Review::where('doc_profile_id', $docProfile[0]->id)->orderBy('created_at', 'DESC')->limit(3)->get();
 
         $thereIsProfile = null;
         foreach ($docProfile as $item) {
@@ -21,6 +25,6 @@ class DashboardController extends Controller
 
         $collectionDocProfile = 1;
 
-        return view('dashboard', compact('docProfile', 'thereIsProfile', 'collectionDocProfile'));
+        return view('dashboard', compact('docProfile', 'thereIsProfile', 'collectionDocProfile')); //, 'messages', 'reviews'));
     }
 }

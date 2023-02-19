@@ -21,19 +21,71 @@
                 <div class="col-lg-4 col-md-12 pb-3">
                     <div class="bg-dark rounded-4 p-3 text-light">
                         Welcome to your Dashboard!<br>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro provident corrupti temporibus
-                        officiis blanditiis similique ratione expedita, quis dolore dignissimos, itaque consequuntur dolores
-                        debitis cumque quos in molestias odio repudiandae.
+                        First of all you need to create your own Profile. To do that you must click Create Profile on the
+                        left sidebar.
+                        You can create an empty profile, we suggest to add your own data to be easy discovered. You can add
+                        your telephone
+                        number, your studio address, your specializations, your photo and cv. Once you do that, you can
+                        receive message and
+                        mails from your patiens and their reviews. You can see your message and reviews in the proper
+                        section by clicking
+                        on Messages and Reviews on the left sidebar.
+                        A patient can review you with a vote from 1 to 5.
+                        You can more discovered more reviews and score you receive, so do a great work!<br>
+                        You can see your own statistics on the section Statistics to see messages and reviews received by
+                        day
+                        You can buy a sponsorship to be in the first positions. To do that you can click in the Sponsorship
+                        section.
+                        We hope you can improve your own business by using BDoctors!
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 pb-3">
-                    <div class="bg-primary rounded-4 p-3 text-light">Prova
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit voluptas quis molestiae eveniet. Dicta
-                        minus alias quis. Qui sunt minus, eligendi expedita harum dolorem atque placeat, dolor unde corrupti
-                        ratione.
-                        Dolorem sunt officiis, est vel maiores dolore at autem quasi perferendis voluptates eaque quae
-                        distinctio voluptatem ratione, temporibus sed minus illo sequi aliquid. Cum esse molestias totam
-                        quia reiciendis consequuntur!
+                    <div class="bg-primary rounded-4 p-3 text-light">Last 3 message
+                        {{-- <table class="table table-dark">
+                            <thead>
+                                <tr>
+
+                                    <th scope="col">Mail</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($messages as $message)
+                                    <tr>
+                                        <td>{{ $message->mail }}</td>
+
+                                        <td><a class="btn btn-primary"
+                                                href="{{ route('messages.show', $message->id) }}">Show</a></td>
+
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+
+                        Last 3 reviews
+                        <table class="table table-dark">
+                            <thead>
+                                <tr>
+
+                                    <th scope="col">Vote</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($reviews as $review)
+                                    <tr>
+                                        <td>{{ $review->vote }}</td>
+
+                                        <td><a class="btn btn-primary"
+                                                href="{{ route('reviews.show', $review->id) }}">Show</a>
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table> --}}
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
