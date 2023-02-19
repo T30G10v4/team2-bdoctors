@@ -7,6 +7,7 @@ use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 use App\Models\DocProfile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MessageController extends Controller
 {
@@ -26,7 +27,8 @@ class MessageController extends Controller
         }
 
         foreach ($docProfile as $single) {
-            $messages = Message::where('doc_profile_id', '=', $single->id)->get();
+            // $messages = Message::where('doc_profile_id', '=', $single->id)->get();
+            $messages = DB::table('messages')->where('doc_profile_id', $single->id)->orderBy('created_at', 'DESC')->get();
         }
 
         $collectionDocProfile = 1;

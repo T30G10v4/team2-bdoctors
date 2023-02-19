@@ -7,6 +7,7 @@ use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
 use App\Models\DocProfile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ReviewController extends Controller
 {
@@ -25,9 +26,8 @@ class ReviewController extends Controller
             $thereIsProfile = $item->id;
         }
 
-
         foreach ($docProfile as $single) {
-            $reviews = Review::where('doc_profile_id', '=', $single->id)->get();
+            $reviews = DB::table('reviews')->where('doc_profile_id', $single->id)->orderBy('created_at', 'DESC')->get();
         }
 
         $collectionDocProfile = 1;
