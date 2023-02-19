@@ -14,11 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('doc_profile_promo', function (Blueprint $table) {
-            $table->id();
-            //$table->unsignedBigInteger('doc_profile_id');
-            //$table->foreign('doc_profile_id')->references('id')->on('doc_profiles')->onDelete('set null');
-            //$table->unsignedBigInteger('promo_id');
-            //$table->foreign('promo_id')->references('id')->on('promos')->onDelete('set null');
+
+            $table->unsignedBigInteger('doc_profile_id');
+            $table->foreign('doc_profile_id')->references('id')->on('doc_profiles')->cascadeOnDelete();
+
+            $table->unsignedBigInteger('promo_id');
+            $table->foreign('promo_id')->references('id')->on('promos')->cascadeOnDelete();
+
+            $table->primary(['doc_profile_id', 'promo_id']);
+
             $table->timestamps();
         });
     }
