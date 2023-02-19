@@ -48,7 +48,7 @@
                         </div>
                         @if ($thereIsProfile)
                             <div class="col mb-3">
-                                <a class="btn btn-secondary w-100" href="">Sponsorships</a>
+                                <a class="btn btn-secondary w-100" href="{{ route('promos.index') }}">Sponsorships</a>
                             </div>
                             <div class="col mb-3">
                                 <a class="btn btn-secondary w-100" href="{{ route('messages.index') }}">Messages</a>

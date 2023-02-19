@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\DocFromSpecController;
 use App\Http\Controllers\Api\DocProfileController;
+use App\Http\Controllers\Api\Orders\OrderController;
 use App\Http\Controllers\Api\SaveMessageController;
 use App\Http\Controllers\Api\SaveReviewController;
 use App\Http\Controllers\Api\SpecsController;
@@ -24,11 +25,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/doc/{slug}', [DocProfileController::class, 'show']);
-
 Route::get('/doc/spec/{id}', [DocFromSpecController::class, 'show']);
-
 Route::get('/spec', [SpecsController::class, 'index']);
-
 Route::post('/savemessage/{id}', [SaveMessageController::class, 'store']);
-
 Route::post('/savereview/{id}', [SaveReviewController::class, 'store']);
+
+//Promos
+Route::get('orders/generate', [OrderController::class, 'generate']);
+Route::post('orders/make/payment', [OrderController::class, 'makePayment']);
