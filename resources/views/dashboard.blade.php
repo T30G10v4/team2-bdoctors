@@ -44,7 +44,8 @@
 
 
 
-                        <div class="bg-primary rounded-4 p-3 text-light">Last 3 message
+                        <div class="bg-primary rounded-4 p-3 text-light">
+                            <h4>Last 3 messages</h4>
                             <table class="table table-dark">
                                 <thead>
                                     <tr>
@@ -67,7 +68,7 @@
                                 </tbody>
                             </table>
 
-                            Last 3 reviews
+                            <h4>Last 3 reviews</h4>
                             <table class="table table-dark">
                                 <thead>
                                     <tr>
