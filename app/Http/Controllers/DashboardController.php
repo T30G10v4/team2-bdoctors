@@ -15,16 +15,20 @@ class DashboardController extends Controller
 
         $userId = Auth::id();
         $docProfile = DocProfile::where('user_id', '=', $userId)->get();
-        //$messages = Message::where('doc_profile_id', $docProfile[0]->id)->orderBy('created_at', 'DESC')->limit(3)->get();
-        //$reviews = Review::where('doc_profile_id', $docProfile[0]->id)->orderBy('created_at', 'DESC')->limit(3)->get();
 
         $thereIsProfile = null;
         foreach ($docProfile as $item) {
             $thereIsProfile = $item->id;
         }
 
+        if ($thereIsProfile) {
+            $messages = Message::where('doc_profile_id', $docProfile[0]->id)->orderBy('created_at', 'DESC')->limit(3)->get();
+            $reviews = Review::where('doc_profile_id', $docProfile[0]->id)->orderBy('created_at', 'DESC')->limit(3)->get();
+        } else {
+            $messages = "";
+            $reviews = "";
+        }
         $collectionDocProfile = 1;
-
-        return view('dashboard', compact('docProfile', 'thereIsProfile', 'collectionDocProfile')); //, 'messages', 'reviews'));
+        return view('dashboard', compact('docProfile', 'thereIsProfile', 'collectionDocProfile', 'messages', 'reviews'));
     }
 }

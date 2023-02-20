@@ -39,55 +39,60 @@
                         We hope you can improve your own business by using BDoctors!
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-12 pb-3">
-                    <div class="bg-primary rounded-4 p-3 text-light">Last 3 message
-                        {{-- <table class="table table-dark">
-                            <thead>
-                                <tr>
+                @if ($thereIsProfile !== null)
+                    <div class="col-lg-4 col-md-12 pb-3">
 
-                                    <th scope="col">Mail</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($messages as $message)
+
+
+                        <div class="bg-primary rounded-4 p-3 text-light">Last 3 message
+                            <table class="table table-dark">
+                                <thead>
                                     <tr>
-                                        <td>{{ $message->mail }}</td>
 
-                                        <td><a class="btn btn-primary"
-                                                href="{{ route('messages.show', $message->id) }}">Show</a></td>
-
+                                        <th scope="col">Mail</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
-                                @endforeach
+                                </thead>
+                                <tbody>
+                                    @foreach ($messages as $message)
+                                        <tr>
+                                            <td>{{ $message->mail }}</td>
 
-                            </tbody>
-                        </table>
+                                            <td><a class="btn btn-primary"
+                                                    href="{{ route('messages.show', $message->id) }}">Show</a></td>
 
-                        Last 3 reviews
-                        <table class="table table-dark">
-                            <thead>
-                                <tr>
+                                        </tr>
+                                    @endforeach
 
-                                    <th scope="col">Vote</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($reviews as $review)
+                                </tbody>
+                            </table>
+
+                            Last 3 reviews
+                            <table class="table table-dark">
+                                <thead>
                                     <tr>
-                                        <td>{{ $review->vote }}</td>
 
-                                        <td><a class="btn btn-primary"
-                                                href="{{ route('reviews.show', $review->id) }}">Show</a>
-                                        </td>
-
+                                        <th scope="col">Vote</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
-                                @endforeach
+                                </thead>
+                                <tbody>
+                                    @foreach ($reviews as $review)
+                                        <tr>
+                                            <td>{{ $review->vote }}</td>
 
-                            </tbody>
-                        </table> --}}
+                                            <td><a class="btn btn-primary"
+                                                    href="{{ route('reviews.show', $review->id) }}">Show</a>
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                @endif
                 <div class="col-lg-4 col-md-12">
                     <div class="bg-dark rounded-4 p-3 text-light">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit aspernatur omnis aliquam

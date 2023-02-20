@@ -19,6 +19,10 @@
                 <div class="container-fluid">
                     <div class="row-cols-1 g-2">
 
+                        <div class="col">
+                            <h2>BDoctors</h2>
+                        </div>
+
                         @include('partials.navigationphoto', ['thereIsProfile', 'docProfile'])
 
                         <div class="col">
@@ -60,6 +64,9 @@
                                 <a class="btn btn-secondary w-100" href="{{ route('stats') }}">Statistics</a>
                             </div>
                         @endif
+                        <div class="col mb-3">
+                            <a class="btn btn-warning w-100" href="http://localhost:5173/">Public Section</a>
+                        </div>
                         <div class="col mb-3">
                             <a class="btn btn-danger w-100" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
