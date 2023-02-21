@@ -152,6 +152,7 @@ if (regBtn) {
 //---------FUNZIONALITA' DI PAGAMENTO--------------
 
 // const button = document.querySelector('#submit-button');
+// const token = button.getAttribute('token');
 
 // braintree.dropin.create({
 //     authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
@@ -167,10 +168,10 @@ if (regBtn) {
 
 //---------CHIAMATA API ORDER PER PAGAMENTO--------------
 
-const btnOrder = document.querySelector('.orderBtn');
-let dataBrain = "";
-btnOrder.addEventListener('click', function () {
-    console.log('pippi');
-    fetch('api/orders/generate').then(data => dataBrain = data).catch(error => console.error(error));
-    window.dataBrain = dataBrain
-})
+// const btnOrder = document.querySelector('.orderBtn');
+// let dataBrain = "";
+// btnOrder.addEventListener('click', function () {
+//     fetch('api/orders/generate').then(data => dataBrain = data, console.log(dataBrain)).then(window.location.href = "{{ route('promos.show')}}"
+//     ).catch(error => console.error(error));
+
+// })

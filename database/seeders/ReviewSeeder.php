@@ -20,7 +20,7 @@ class ReviewSeeder extends Seeder
     {
         for ($i = 0; $i < 160; $i++) {
             $review = new Review();
-            $review->doc_profile_id = 3;
+            $review->doc_profile_id = 1;
             $review->text = $faker->text(100);
             $review->vote = 5; //$faker->numberBetween(1, 5);
             $review->username = $faker->name();

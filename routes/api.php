@@ -31,5 +31,4 @@ Route::post('/savemessage/{id}', [SaveMessageController::class, 'store']);
 Route::post('/savereview/{id}', [SaveReviewController::class, 'store']);
 
 //Promos
-Route::get('orders/generate', [OrderController::class, 'generate'])->name('generate');
 Route::post('orders/make/payment', [OrderController::class, 'makePayment'])->name('makePayment');
