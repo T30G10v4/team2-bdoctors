@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\DocProfile;
 use App\Models\Promo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PromoController extends Controller
 {
     public function index()
     {
-        $docProfile = DocProfile::all();
+        $docProfile = DocProfile::where('user_id', '=', Auth::id())->get();
         $promos = Promo::all();
         $collectionDocProfile = 1;
 
@@ -24,7 +25,7 @@ class PromoController extends Controller
 
     public function show(Promo $promo)
     {
-        $docProfile = DocProfile::all();
+        $docProfile = DocProfile::where('user_id', '=', Auth::id())->get();
         $collectionDocProfile = 1;
 
         $thereIsProfile = null;
