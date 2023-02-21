@@ -98,7 +98,7 @@ class DocProfileController extends Controller
             ->select('specializations.name')->where('doc_profiles.id', '=', $docProfile[0]->id)
             ->get();
 
-        $reviewsCollection = Review::where('doc_profile_id', $docProfile[0]->id)->get();
+        $reviewsCollection = Review::where('doc_profile_id', $docProfile[0]->id)->orderBy('created_at', 'DESC')->get();
 
         $specializationsDocArray = [];
         foreach ($specializations as $spec) {

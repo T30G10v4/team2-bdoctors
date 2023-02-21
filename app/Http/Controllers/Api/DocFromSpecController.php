@@ -40,6 +40,7 @@ class DocFromSpecController extends Controller
             $reviewsForDoc = DB::table('reviews')
                 ->select('reviews.vote')
                 ->where('reviews.doc_profile_id', $doc->id)
+                //->orderBy('created_at', 'ASC')
                 ->get();
 
 
