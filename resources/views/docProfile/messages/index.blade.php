@@ -21,7 +21,12 @@
                     <th scope="row">{{ $message->username }}</th>
                     <td>{{ $message->mail }}</td>
                     {{-- <td>{{ $message->text }}</td> --}}
-                    <td>{{ $message->created_at }}</td>
+                    <td> @php
+                        
+                        $date = new DateTimeImmutable($message->created_at);
+                        echo $date->format('j M o G:i');
+                        
+                    @endphp</td>
                     <td><a class="btn btn-primary" href="{{ route('messages.show', $message->id) }}">Show</a></td>
 
                 </tr>
