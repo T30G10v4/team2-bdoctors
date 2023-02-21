@@ -12,11 +12,11 @@ class OrderController extends Controller
     public function generate(Request $request, Gateway $gateway)
     {
         $token = $gateway->clientToken()->generate();
-
         $data = [
             'success' => true,
             'token' => $token,
         ];
+
         return response()->json($data, 200);
     }
 
@@ -44,6 +44,6 @@ class OrderController extends Controller
             return response()->json($data, 401);
         }
 
-        return 'make payment';
+        return redirect()->route('docProfile.sponsorships.show');
     }
 }

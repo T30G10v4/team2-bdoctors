@@ -7,9 +7,9 @@
                 <h2>{{ $promo->name }}</h2>
                 <p>{{ $promo->price }} Euro</p>
 
-                <p>{{ $promo->duration }} h</p>
-                <button>
-                    <a href="{{ route('promos.show', $promo->id) }}"> Dettagli </a>
+                <p>{{ $promo->duration }}</p>
+                <button class="orderBtn">
+                    <a href="{{ route('promos.show', $promo->id) }}"> Purchase </a>
                 </button>
             </div>
         @endforeach
