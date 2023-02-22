@@ -106,7 +106,7 @@
                     @if ($thereIsProfile)
                         @if ($docProfile[0]->sponsorized)
                             <div class="rounded-4 p-3 bg-dark " style="color: gold">
-                                You're actually sponsorized.
+                                💎 You're actually sponsorized.
                             </div>
                         @else
                             <div class="bg-dark rounded-4 p-3 text-light">
