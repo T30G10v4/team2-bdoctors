@@ -186,7 +186,6 @@ class DocProfileController extends Controller
         }
 
         $docProfile->update($form_data);
-        dd($docProfile);
         //QUI sincronizziamo l'insieme di specializzazioni scelte in fase di creazione con quelle in fase di edit
         if ($request->has('specializations')) {
             $docProfile->specializations()->sync($form_data['specializations']);
