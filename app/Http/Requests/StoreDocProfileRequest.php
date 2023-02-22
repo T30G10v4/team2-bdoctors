@@ -32,6 +32,7 @@ class StoreDocProfileRequest extends FormRequest
             'curriculum_vitae' => ['nullable', 'mimes:pdf', 'max:2048'],
             'user_id' => ['nullable', 'exists:users,id'],
             'specializations' => ['exists:specializations,id'],
+            'sponosrized' => ['false'],
 
 
         ];

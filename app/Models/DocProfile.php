@@ -17,6 +17,7 @@ class DocProfile extends Model
         'tel',
         'services',
         'slug',
+        'sponosrized',
         'user_id',
 
     ];

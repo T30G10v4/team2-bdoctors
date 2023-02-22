@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\countOf;
@@ -12,7 +13,7 @@ class DocFromSpecController extends Controller
 {
     public function show($id)
     {
-
+        // $docProfile = DB::table('doc_profiles')->select('status_promo')->where('user_id', '=', Auth::id())->get();
         $docsForSpecs = DB::table('doc_profile_specialization')
             ->join('doc_profiles', 'doc_profile_specialization.doc_profile_id', '=', 'doc_profiles.id')
             ->join('users', 'doc_profiles.user_id', '=', 'users.id')
@@ -26,6 +27,7 @@ class DocFromSpecController extends Controller
                 'doc_profiles.tel',
                 'doc_profiles.services',
                 'doc_profiles.slug',
+                'doc_profiles.sponsorized',
 
             )
 
@@ -55,7 +57,8 @@ class DocFromSpecController extends Controller
                 $mediaVote = 0;
             }
 
-            $doc->sponsorized = (bool)rand(0, 1);
+            // (bool)rand(0, 1)
+            // $doc->sponsorized = $docProfile[0]->;
             $doc->numReviews = $numVote;
             $doc->mediaVote = $mediaVote;
         }

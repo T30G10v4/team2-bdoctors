@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('doc_profiles', function (Blueprint $table) {
-            $table->boolean('status_promo')->default(false)->after('slug');
+            $table->boolean('sponsorized')->default(false)->after('slug');
         });
     }
 

@@ -31,6 +31,12 @@
     </div> --}}
 
 
+    <form action="{{ route('payment.update', $docProfile[0]->id) }}" method="POST">
+        @method('PUT')
+        @csrf
+
+        <button type="submit">PROVAMI</button>
+    </form>
 
 
 

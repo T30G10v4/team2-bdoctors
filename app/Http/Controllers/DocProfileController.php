@@ -8,7 +8,9 @@ use App\Http\Requests\UpdateDocProfileRequest;
 use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 
 class DocProfileController extends Controller
@@ -161,6 +163,7 @@ class DocProfileController extends Controller
 
         //lo slug del profilo corrisponde al nome e cognome del dottore
         $form_data['slug'] = DocProfile::generateSlug("doc" . "-" . $request->user()->name . "-" . $request->user()->name);
+        // $form_data['status_promo'] = DB::table('doc_profiles')->select('status_promo')->where('user_id', '=', Auth::id())->get();
 
         //QUI gestione upload di una nuova PHOTO
         if ($request->hasFile('photo')) {
@@ -183,7 +186,7 @@ class DocProfileController extends Controller
         }
 
         $docProfile->update($form_data);
-
+        dd($docProfile);
         //QUI sincronizziamo l'insieme di specializzazioni scelte in fase di creazione con quelle in fase di edit
         if ($request->has('specializations')) {
             $docProfile->specializations()->sync($form_data['specializations']);
@@ -193,6 +196,11 @@ class DocProfileController extends Controller
 
         return redirect()->route('docProfile.show', $docProfile->id)->with('message', "Hai aggiornato con successo");
     }
+
+
+
+
+
 
     /**
      * Remove the specified resource from storage.

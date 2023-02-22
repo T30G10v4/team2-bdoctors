@@ -8,6 +8,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\StatusController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -43,6 +44,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('my-stats', [ChartJSController::class, 'index'])->name('stats');
     Route::resource('promos', PromoController::class)->only(['index', 'show']);
     Route::get('orders/generate', [OrderController::class, 'index'])->name('generate');
+    Route::resource('payment', StatusController::class);
 });
 
 
