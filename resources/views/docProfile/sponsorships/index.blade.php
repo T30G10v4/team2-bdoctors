@@ -2,11 +2,13 @@
 
 @section('content')
     <div class="mt-4">
-        <h3>Perchè sponsorizzare il tuo profilo? ☝</h3>
+        <h3>Why sponsor your profile? ☝</h3>
         <div style="width: 70%; margin:0 auto">
-            <h4 class="ml-5">Con una sponsorizzazione sarai sempre in prima vista per i tuoi pazienti,
-                il tuo profilo uscirà nelle prime posizioni quando l'utente cercherà nella tua specializzazione
-            </h4>
+            <p class="ml-5">
+
+                With a sponsorship you will always be first sight for your patients,
+                your profile will appear in the top positions when the user searches for your specialization
+            </p>
         </div>
     </div>
 
