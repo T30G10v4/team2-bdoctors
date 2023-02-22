@@ -103,10 +103,12 @@
                 @endif
                 <div class="col-lg-4 col-md-12">
                     <div class="bg-dark rounded-4 p-3 text-light">
-                        @if ($docProfile[0]->sponsorized)
-                            You're actually sponsorized.
-                        @else
-                            You're actually non sponsorized.
+                        @if ($thereIsProfile)
+                            @if ($docProfile[0]->sponsorized)
+                                You're actually sponsorized.
+                            @else
+                                You're actually non sponsorized.
+                            @endif
                         @endif
                     </div>
                 </div>
