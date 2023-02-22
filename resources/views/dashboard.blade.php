@@ -96,15 +96,11 @@
                 @endif
                 <div class="col-lg-4 col-md-12">
                     <div class="bg-dark rounded-4 p-3 text-light">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit aspernatur omnis aliquam
-                        distinctio deserunt aperiam, perspiciatis quaerat doloribus, corrupti magni veritatis assumenda
-                        tempora similique sint! Veritatis voluptatibus mollitia quidem error.
-                        Eius sunt et ratione? Animi eveniet deleniti magni consectetur suscipit vero odio quis maxime
-                        blanditiis, dicta dolore! Soluta voluptatem, nulla nihil nesciunt quas quia amet doloribus, mollitia
-                        consequatur recusandae tempora!
-                        Quam architecto commodi voluptate dolorem deleniti illum amet ducimus repudiandae in numquam.
-                        Accusantium enim quibusdam, facere quod animi atque sunt expedita nostrum dignissimos possimus
-                        inventore libero quia sequi suscipit sint?
+                        @if ($docProfile[0]->sponsorized)
+                            You're actually sponsorized.
+                        @else
+                            You're actually non sponsorized.
+                        @endif
                     </div>
                 </div>
 
