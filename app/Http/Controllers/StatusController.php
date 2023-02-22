@@ -73,7 +73,7 @@ class StatusController extends Controller
         $docProfile = DocProfile::where('user_id', '=', Auth::id())->get();
         $docProfile[0]['sponsorized'] = true;
         $docProfile[0]->update(['sponsorized' => 1]);
-        return redirect()->route('dashboard')->with('message', "Hai Sponsorizzato con successo");
+        return redirect()->route('dashboard')->with('message', "Transaction completed successfully");
     }
 
     /**

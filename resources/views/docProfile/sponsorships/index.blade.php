@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mt-4">
-        <h1>Perchè sponsorizzare il tuo profilo? ☝</h1>
+        <h3>Perchè sponsorizzare il tuo profilo? ☝</h3>
         <div style="width: 70%; margin:0 auto">
             <h4 class="ml-5">Con una sponsorizzazione sarai sempre in prima vista per i tuoi pazienti,
                 il tuo profilo uscirà nelle prime posizioni quando l'utente cercherà nella tua specializzazione
@@ -27,18 +27,19 @@
     @enderror
          --}}
 
-        <div class="row-card container d-flex justify-content-around gap-3 mt-5">
+        <div class="row-card container d-flex justify-content-around gap-3 mt-4">
 
             @foreach ($promos as $promo)
-                <label style="border:1px solid black; border-radius:8px; padding: 15px"
-                    class="sponsorship-card d-flex flex-column h-100 ">
+                <label style="border:1px solid black; border-radius:10px; padding: 15px"
+                    class="sponsorship-card d-flex flex-column h-100 text-light bg-dark" style="max-height: 150px;">
                     <div class="sponsorship title-promo">
-                        <h3>Promotion:</h3>
-                        <h3> {{ $promo->name }} </h3>
+                        <h5 style="color:gold">Promotion</h5>
+                        <h5> {{ $promo->name }}</h5>
+                        <h5>{{ $promo->duration }}h</h5>
                     </div>
 
                     <div class="sponsorship price-promo">
-                        <h4>€{{ $promo->price }}</h4>
+                        <h6>€{{ $promo->price }}</h6>
 
                     </div>
                     <div class="sponsorship">
@@ -81,19 +82,15 @@
 
 
 
-
-
-
-
     <form action="{{ route('payment.update', $docProfile[0]->id) }}" method="POST">
         @method('PUT')
         @csrf
 
-        <button type="submit">Pay Sponsorization</button>
+
+        <button type="submit" id="pay-button" class="button button--small button--green d-none">
+            <a>Pay</a>
+        </button>
     </form>
-
-
-
 
     <script>
         const button = document.querySelector('#submit-button');
@@ -108,6 +105,15 @@
                     // Submit payload.nonce to your server
                 });
             })
+        });
+
+        const payBtn = document.querySelector('#pay-button')
+
+        button.addEventListener('click', function() {
+            payBtn.classList.remove("d-none");
+            button.classList.add("d-none");
+
+            console.log('pippi')
         });
     </script>
 @endsection

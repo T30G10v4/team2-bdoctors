@@ -17,6 +17,15 @@
 
     <body>
         <div class="container-fluid overflow-hidden p-3">
+
+            {{-- messaggio per comunicare avvenuta creazione tramite funzione with() --}}
+            @if (session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
+
+
             <div class="row">
                 <div class="col-lg-4 col-md-12 pb-3">
                     <div class="bg-dark rounded-4 p-3 text-light">
@@ -41,8 +50,6 @@
                 </div>
                 @if ($thereIsProfile !== null)
                     <div class="col-lg-4 col-md-12 pb-3">
-
-
 
                         <div class="bg-primary rounded-4 p-3 text-light">
                             <h4>Last 3 messages</h4>
