@@ -107,16 +107,15 @@
                         @if ($docProfile[0]->sponsorized)
                             <div class="rounded-4 p-3 bg-dark " style="color: gold">
                                 You're actually sponsorized.
-                            @else
-                                <div class="bg-dark rounded-4 p-3 text-light">
-                                    You're actually non sponsorized.
+                            </div>
+                        @else
+                            <div class="bg-dark rounded-4 p-3 text-light">
+                                You're actually non sponsorized.
+                            </div>
                         @endif
                     @endif
                 </div>
             </div>
-
-
-        </div>
         </div>
     </body>
 
